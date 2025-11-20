@@ -1,5 +1,5 @@
 import os
-from src.utils import run_cmd
+from .utils import run_cmd
 
 DOCKER_CMD = os.environ.get("DOCKER_CMD", "docker")
 
