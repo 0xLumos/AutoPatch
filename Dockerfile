@@ -15,6 +15,9 @@
 # CMD ["python", "app.py"]
 
 FROM python:3.11-slim
+
 WORKDIR /app/sample_images/vulnerable-app
+
 COPY sample_images/vulnerable-app /app/sample_images/vulnerable-app
-CMD ["python", "app.py"]
+
+CMD ["python", "-m", "http.server", "8000"]
