@@ -16,12 +16,26 @@
 
 FROM python:3.11-slim
 
+# Install OS deps if needed
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl \
+        bash \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
 
-RUN apt-get update && apt install python3 &&   apt install python3-pip
-WORKDIR /app/sample_images/vulnerable-app
+COPY sample_images/vulnerable-app /app
+
+RUN if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
+
+EXPOSE 8000
+
+CMD ["python3", "app.py"]
 
 
 COPY sample_images/vulnerable-app /app/sample_images/vulnerable-app
+
 
 
