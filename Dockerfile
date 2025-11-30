@@ -12,5 +12,4 @@ COPY . .
 # (Optional) Install dependencies if you have a requirements.txt
 # RUN pip install -r requirements.txt
 
-# Run a simple Python script
-CMD ["python3", "app.py"]
+
