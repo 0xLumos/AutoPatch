@@ -16,7 +16,12 @@
 
 FROM python:3.11-slim
 
+
+
+RUN apt-get update && apt install python3 &&   apt install python3-pip
 WORKDIR /app/sample_images/vulnerable-app
 
+
 COPY sample_images/vulnerable-app /app/sample_images/vulnerable-app
+
 
