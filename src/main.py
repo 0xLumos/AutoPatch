@@ -1,142 +1,138 @@
-# main.py
-"""Main coordinator: build images, scan before+after, patch Dockerfile.
-
-This script is self-contained (no external parser/builder/comparer modules).
-It uses scanner.py and patcher.py from the same directory.
-"""
-from __future__ import annotations
-import os
-import subprocess
-import shutil
-import json
+import argparse
+from .utils import log_step, extract_image_name, run_cmd
+from .scanner import scan_image, summarize, generate_sbom
+from .patcher import patch_dockerfile, extract_first_base
+from .builder import build_image, tag_image, push_image
+from .signer import sign_digest, verify_digest
+from .comparer import compare
 import sys
-from typing import Dict, Any
-from . import patcher, scanner
 
 
-def run_cmd(cmd: list[str]) -> tuple[int, str]:
-    try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
-        return proc.returncode, proc.stdout + (proc.stderr or "")
-    except Exception as e:
-        return 1, str(e)
-
-
-def build_image(context_dir: str, tag: str, dockerfile: str) -> bool:
-    """
-    Build a docker image. Returns True on success.
-    """
-    if not shutil.which("docker"):
-        print("[!] docker binary not found in PATH.")
-        return False
-
-    cmd = ["docker", "build", "-f", dockerfile, "-t", tag, context_dir]
-    print(f"[+] Building image {tag} with {dockerfile} ...")
-    code, out = run_cmd(cmd)
-    if code != 0:
-        print(f"[!] Docker build failed (code {code}): {out.strip()}")
-        return False
-    print(f"[+] Docker build succeeded: {tag}")
-    return True
-
-
-def summarize(trivy_json: Dict[str, Any]) -> Dict[str, int]:
-    """
-    Create a simple summary dict from Trivy JSON:
-    { 'Critical': N, 'High': N, 'Medium': N, 'Low': N, 'Unknown': N }
-    """
-    counts = {"Critical": 0, "High": 0, "Medium": 0, "Low": 0, "Unknown": 0}
-    if not trivy_json:
-        return counts
-
-    for res in trivy_json.get("Results", []):
-        for vuln in res.get("Vulnerabilities", []) or []:
-            sev = vuln.get("Severity", "Unknown")
-            if sev not in counts:
-                sev = "Unknown"
-            counts[sev] += 1
-    return counts
-
-
-def compare(before: Dict[str, int], after: Dict[str, int]) -> Dict[str, int]:
-    """
-    Return reductions per severity: before - after
-    """
-    out = {}
-    keys = set(before) | set(after)
-    for k in keys:
-        out[k] = before.get(k, 0) - after.get(k, 0)
-    return out
-
-
-def write_json(path: str, data: Dict[str, Any]) -> None:
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+REGISTRY = "localhost:5000/autopatch"
 
 
 def main():
-    dockerfile_path = "Dockerfile"
-    if not os.path.exists(dockerfile_path):
-        print(f"[!] No {dockerfile_path} found in cwd: {os.getcwd()}")
-        sys.exit(1)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dockerfile", required=True)
+    args = parser.parse_args()
 
-    with open(dockerfile_path, "r", encoding="utf-8") as f:
-        docker_text = f.read()
+    dockerfile = args.dockerfile
 
-    base_image, base_tag = patcher.find_base_image(docker_text)
-    print(f"[+] Found base image: {base_image}:{base_tag if base_tag else '<none>'}")
+    # --------------------------------------------
+    # Read original Dockerfile
+    # --------------------------------------------
+    with open(dockerfile, "r", encoding="utf-8") as f:
+        text = f.read()
 
-    image_name = "autopatch"
+    base, tag = extract_first_base(text)
+    img_name = extract_image_name(base)
 
-    # Build base image
-    if not build_image(".", image_name, dockerfile_path):
-        print("[!] Aborting because base image build failed.")
-        sys.exit(1)
+    LOCAL_ORIG = f"{img_name}-orig"
+    LOCAL_PATCHED = f"{img_name}-patched"
+    REGISTRY_PATCHED = f"{REGISTRY}/{img_name}-patched:latest"
 
-    # Scan before
-    before = scanner.scan_image(image_name, "trivy_before.json")
-    before_summary = summarize(before)
-    print("[+] Trivy BEFORE summary:", before_summary)
+    log_step(f"Found base image: {base}:{tag}")
 
-    # Propose and apply patch
-    unknown_ratio = 0.0
-    total = sum(before_summary.values())
-    if total:
-        unknown_ratio = before_summary["Unknown"] / total
+    # --------------------------------------------
+    # Build original image
+    # --------------------------------------------
+    if not build_image(LOCAL_ORIG, dockerfile):
+        log_step("[!] Failed building original image")
+        return
 
-    proposed = patcher.propose_upgrade(base_image, unknown_ratio)
-    if proposed:
-        print(f"[+] Proposed base upgrade: {proposed}")
-        docker_text = patcher.replace_base_image(docker_text, proposed)
-        print(f"[+] Replaced base image with: {proposed}")
-    else:
-        print("[-] No base upgrade proposed; keeping original base.")
+    before_json = scan_image(LOCAL_ORIG, "trivy_before.json")
+    before_summary = summarize(before_json)
+    log_step(f"BEFORE summary: {before_summary}")
 
-    docker_text = patcher.add_apt_upgrade(docker_text)
-    patched_path = "Dockerfile.patched"
-    with open(patched_path, "w", encoding="utf-8") as f:
-        f.write(docker_text)
-    print(f"[+] Patched Dockerfile written to {patched_path}")
+    generate_sbom(LOCAL_ORIG, "sbom_before.json")
 
-    patched_image = f"{image_name}-patched"
-    if not build_image(".", patched_image, patched_path):
-        print("[!] Aborting because patched image build failed.")
-        sys.exit(1)
+    # --------------------------------------------
+    # Patch Dockerfile → build patched image
+    # --------------------------------------------
+    patched_text, old, new = patch_dockerfile(text, "sbom_before.json")
+    with open("Dockerfile.patched", "w", encoding="utf-8") as f:
+        f.write(patched_text)
 
-    after = scanner.scan_image(patched_image, "trivy_after.json")
-    after_summary = summarize(after)
-    print("[+] Trivy AFTER summary:", after_summary)
+    log_step(f"Patched Dockerfile uses: {new}")
 
-    comparison = compare(before_summary, after_summary)
-    print("[+] Vulnerability reductions (before - after):", comparison)
+    if not build_image(LOCAL_PATCHED, "Dockerfile.patched"):
+        log_step("[!] Failed to build patched image")
+        return
 
-    if before:
-        write_json("trivy_before.json", before)
-    if after:
-        write_json("trivy_after.json", after)
+    # --------------------------------------------
+    # Tag patched image for registry
+    # --------------------------------------------
+    log_step(f"Tagging for registry: {LOCAL_PATCHED} → {REGISTRY_PATCHED}")
+    if not tag_image(LOCAL_PATCHED, REGISTRY_PATCHED):
+        log_step("[!] Tagging failed")
+        return
 
-    print("\n[+] Done. Files produced: Dockerfile.patched, trivy_before.json, trivy_after.json (when available).")
+    # --------------------------------------------
+    # Push to registry
+    # --------------------------------------------
+    if not push_image(REGISTRY_PATCHED):
+        log_step("[!] Push to registry FAILED")
+        return
 
+    # --------------------------------------------
+    # 🔥 CRITICAL FIX: Remove local tag to avoid Docker fallback
+    # --------------------------------------------
+    log_step("Removing local patched image to force digest resolution from registry...")
+    run_cmd(["docker", "rmi", "-f", LOCAL_PATCHED])
+
+    # --------------------------------------------
+    # Pull only the registry tag
+    # --------------------------------------------
+    log_step("Pulling patched image from registry to obtain digest...")
+    code, out = run_cmd(["docker", "pull", REGISTRY_PATCHED])
+    if code != 0:
+        log_step("[!] FAILED to pull from registry!")
+        print(out)
+        return
+
+    # --------------------------------------------
+    # Inspect registry image for correct registry-backed digest
+    # --------------------------------------------
+    code, out = run_cmd([
+        "docker", "inspect",
+        "--format={{index .RepoDigests 0}}",
+        REGISTRY_PATCHED
+    ])
+
+    if code != 0 or "@" not in out:
+        log_step("[!] docker inspect FAILED to retrieve digest")
+        print(out)
+        return
+
+    digest_ref = out.strip()
+    log_step(f"Resolved patched image digest ref: {digest_ref}")
+
+    # --------------------------------------------
+    # Cosign signature + verification
+    # --------------------------------------------
+    if not sign_digest(digest_ref):
+        log_step("[!] Signing FAILED")
+        return
+
+    if not verify_digest(digest_ref):
+        log_step("[!] Verification FAILED")
+        return
+
+    log_step("Cosign trust verification PASSED.")
+
+    # --------------------------------------------
+    # AFTER scan: IMPORTANT — scan registry image, NOT deleted local one
+    # --------------------------------------------
+    after_json = scan_image(REGISTRY_PATCHED, "trivy_after.json")
+    after_summary = summarize(after_json)
+    log_step(f"AFTER summary: {after_summary}")
+
+    # --------------------------------------------
+    # Vulnerability reduction output
+    # --------------------------------------------
+    diff = compare(before_summary, after_summary)
+    log_step("Vulnerability reduction:")
+    print(diff)
 
 
 if __name__ == "__main__":

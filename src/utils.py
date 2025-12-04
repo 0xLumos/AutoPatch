@@ -1,39 +1,42 @@
 import subprocess
 import json
-from typing import List, Tuple
+import os
+from datetime import datetime
 
-def run_cmd(cmd: List[str], capture_output: bool = True, check: bool = True) -> Tuple[int, str]:
-    if not cmd or any(arg is None for arg in cmd):
-        raise ValueError(f"Invalid command: {cmd}")
 
+def log_step(msg):
+    # Replace unsupported Windows console characters
+    safe_msg = msg.replace("→", "->").replace("↳", "->").replace("✓", "[OK]")
+
+    print(f"[+] {safe_msg}", flush=True)
+
+
+def log_info(msg: str):
+    print(f"INFO:src.patcher: {msg}")
+
+
+def run_cmd(cmd, env_override=None):
+    env = env_override if env_override else None
+
+    proc = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        stdin=subprocess.PIPE,
+        text=True,
+        env=env
+    )
+    out, err = proc.communicate()
+    return proc.returncode, (out + err)
+
+
+def load_json(path: str):
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=capture_output,
-            text=True,
-            encoding="utf-8",
-            errors="ignore"
-        )
-
-        if check and result.returncode != 0:
-            print(f"[-] Command failed: {' '.join(cmd)}")
-            print("STDERR:", result.stderr)
-            raise RuntimeError(result.stderr or "Unknown subprocess error")
-
-        return result.returncode, (result.stdout or "")
-    
-    except FileNotFoundError:
-        print(f"[!] Command not found: {cmd[0]}")
-        raise
-    except Exception as e:
-        print(f"[!] Unexpected error running command {' '.join(cmd)}: {e}")
-        raise
-
-def read_json(path: str):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return {}
 
 
-def write_json(path: str, data: dict):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+def extract_image_name(base_image: str) -> str:
+    return base_image.split("/")[-1].lower()

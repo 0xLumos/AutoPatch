@@ -1,45 +1,49 @@
-from __future__ import annotations
-import subprocess
-import json
-import os
-from typing import Tuple, Dict, Any
-from .utils import run_cmd, read_json
+from .utils import run_cmd, load_json, log_step
 
 
-def scan_image(image_name: str, output_file: str) -> Dict[str, Any]:
-    """
-    Scan a Docker image with Trivy and save/return JSON results.
+def scan_image(image: str, output_path: str) -> dict:
+    log_step(f"Running Trivy scan for {image} → {output_path}")
 
-    - If trivy fails or isn't present, returns {}.
-    - output_file will be overwritten if it exists.
-    """
-    if not image_name:
-        raise ValueError("No image name provided for scanning.")
-
-    if os.path.exists(output_file):
-        try:
-            os.remove(output_file)
-        except Exception:
-            pass
-
-    print(f"[+] Running Trivy scan for {image_name} → {output_file}")
     cmd = [
-        "trivy",
-        "image",
-        "--format", "json",
+        "trivy", "image",
         "--quiet",
-        image_name,
-        "-o", output_file,
+        "--format", "json",
+        "-o", output_path,
+        image
+    ]
+
+    code, out = run_cmd(cmd)
+    if code != 0:
+        print(out)
+        return {}
+
+    return load_json(output_path)
+
+
+def generate_sbom(image: str, output_path: str) -> dict:
+    log_step(f"Generating SBOM for {image} → {output_path}")
+    cmd = [
+        "trivy", "image",
+        "--format", "cyclonedx",
+        "--output", output_path,
+        image
     ]
     code, out = run_cmd(cmd)
     if code != 0:
-        print(f"[!] Trivy scan failed (code {code}): {out.strip()}")
+        print(out)
         return {}
 
-    try:
-        data = read_json(output_file)
-        print(f"[+] Scan complete: {len(data.get('Results', []))} Results entries.")
-        return data
-    except Exception as e:
-        print(f"[!] Failed to read/parse {output_file}: {e}")
-        return {}
+    return load_json(output_path)
+
+
+def summarize(scan_json: dict) -> dict:
+    summary = {"Critical": 0, "High": 0, "Medium": 0, "Low": 0, "Unknown": 0}
+    for result in scan_json.get("Results", []):
+        vulns = result.get("Vulnerabilities", [])
+        for v in vulns:
+            sev = v.get("Severity", "Unknown")
+            if sev in summary:
+                summary[sev] += 1
+            else:
+                summary["Unknown"] += 1
+    return summary
