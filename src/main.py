@@ -67,13 +67,22 @@ def main():
         log_step("[!] Tagging failed")
         return
 
+    # --------------------------------------------
+    # Push to registry
+    # --------------------------------------------
     if not push_image(REGISTRY_PATCHED):
         log_step("[!] Push to registry FAILED")
         return
 
+    # --------------------------------------------
+    # CRITICAL FIX: Remove local tag to avoid Docker fallback
+    # --------------------------------------------
     log_step("Removing local patched image to force digest resolution from registry...")
     run_cmd(["docker", "rmi", "-f", LOCAL_PATCHED])
 
+    # --------------------------------------------
+    # Pull only the registry tag
+    # --------------------------------------------
     log_step("Pulling patched image from registry to obtain digest...")
     code, out = run_cmd(["docker", "pull", REGISTRY_PATCHED])
     if code != 0:
@@ -118,6 +127,8 @@ def main():
     after_summary = summarize(after_json)
     log_step(f"AFTER summary: {after_summary}")
 
+    generate_sbom(LOCAL_PATCHED, "sbom_after.json")
+
     # --------------------------------------------
     # Vulnerability reduction output
     # --------------------------------------------
@@ -128,4 +139,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
