@@ -49,7 +49,7 @@ Argument	Description
 --patch-final-only	Only patch the final stage of the Dockerfile
 
 📂 Output Structure
-.
+
 ├── Dockerfile.patched          # Patched Dockerfile with upgrades
 ├── reports/
 │   ├── before.json             # Trivy scan (original image)
@@ -79,6 +79,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
