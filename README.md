@@ -48,16 +48,18 @@ Argument	Description
 --signing	Signing mode: key, keyless, or none
 --patch-final-only	Only patch the final stage of the Dockerfile
 
-📂 Output Structure
+## 📂 Output Structure
 
-├── Dockerfile.patched          # Patched Dockerfile with upgrades
+```text
+.
+├── Dockerfile.patched        # Patched Dockerfile with upgrades
 ├── reports/
-│   ├── before.json             # Trivy scan (original image)
-│   ├── after.json              # Trivy scan (patched image)
-│   ├── sbom_before.json        # CycloneDX SBOM before patching
-│   └── sbom_after.json         # CycloneDX SBOM after patching
-└── autopatch.log               # Full CLI execution log
-
+│   ├── before.json           # Trivy scan (original image)
+│   ├── after.json            # Trivy scan (patched image)
+│   ├── sbom_before.json      # CycloneDX SBOM before patching
+│   └── sbom_after.json       # CycloneDX SBOM after patching
+└── autopatch.log             # Full CLI execution log
+```
 🔬 Academic Context
 This tool was developed as part of a master's thesis titled:
 
@@ -80,6 +82,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
