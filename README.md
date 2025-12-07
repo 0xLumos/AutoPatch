@@ -63,7 +63,7 @@ Argument	Description
 🔬 Academic Context
 This tool was developed as part of a master's thesis titled:
 
-“Automated Vulnerability Patching for Cloud-Native Containers”
+“SBOM-Driven AutoPatching for Secure CI/CD Container Pipelines”
 
 It demonstrates how static SBOM analysis, Trivy scanning, and OCI signing can be combined to automate container hardening with minimal human intervention. It is intended for use in DevSecOps pipelines and secure build systems.
 
@@ -82,6 +82,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
