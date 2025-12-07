@@ -49,8 +49,6 @@ Argument	Description
 --patch-final-only	Only patch the final stage of the Dockerfile
 
 📂 Output Structure
-bash
-Copy code
 .
 ├── Dockerfile.patched          # Patched Dockerfile with upgrades
 ├── reports/
@@ -81,5 +79,6 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
