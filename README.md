@@ -28,7 +28,7 @@ Developed as part of a master's research project, it combines static analysis, s
 - Python 3.7+
 - Docker
 - [Trivy](https://aquasecurity.github.io/trivy/)
-- [Cosign](https://docs.sigstore.dev/cosign/overview)
+- [Cosign](https://github.com/sigstore/cosign)
 - GNU/Linux or macOS
 
 Install Python dependencies:
@@ -82,6 +82,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
