@@ -5,7 +5,7 @@
 
 Autopatch is a modular, automated tool designed to scan, patch, and harden container images by upgrading their base operating system layers and package dependencies. It rewrites multi-stage Dockerfiles, upgrades vulnerable components, and signs rebuilt images for supply chain provenance.
 
-Developed as part of a master's research project, it combines static analysis, security automation, and software supply chain best practices in a reproducible, minimal-intervention workflow.
+Developed as part of a master's research project, it combines static analysis, security automation, and software supply chain best practices in a reproducible workflow.
 
 ---
 
@@ -82,6 +82,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
