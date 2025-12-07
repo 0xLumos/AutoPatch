@@ -33,7 +33,6 @@ Developed as part of a master's research project, it combines static analysis, s
 
 Install Python dependencies:
 
-```bash
 pip install -r requirements.txt
 🚀 Usage
 bash
@@ -83,9 +82,4 @@ Open a pull request
 📝 License
 MIT License. See LICENSE for details.
 
-yaml
-Copy code
 
----
-
-Let me know if you want this version tailored for a private repo, academic submission, or an enterprise tone. I can also generate a matching `requirements.txt`, `Makefile`, or diagram if needed.
