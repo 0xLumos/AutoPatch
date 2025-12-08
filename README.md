@@ -43,6 +43,7 @@ python main.py --dockerfile ./Dockerfile \
                --patch-final-only
 
 python3 -m src.main FLAGS
+
 CLI Options
 Argument	Description
 --dockerfile	Path to the input Dockerfile (required)
@@ -84,6 +85,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
