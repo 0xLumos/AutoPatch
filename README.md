@@ -34,9 +34,9 @@ Developed as part of a master's research project, it combines static analysis, s
 Install Python dependencies:
 
 pip install -r requirements.txt
-🚀 Usage
-bash
-Copy code
+
+## 🚀 Usage
+
 python main.py --dockerfile ./Dockerfile \
                --registry localhost:5000 \
                --signing key \
@@ -82,6 +82,7 @@ Open a pull request
 
 📝 License
 MIT License. See LICENSE for details.
+
 
 
 
