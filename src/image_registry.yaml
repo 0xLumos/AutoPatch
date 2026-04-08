@@ -1,0 +1,730 @@
+schema_version: "1.0"
+last_updated: "2026-03"
+
+languages:
+  python:
+    patterns:
+      - "python"
+    version_style: "major_minor"
+    tag_formats:
+      default: "python:{version}-slim"
+      alpine: "python:{version}-alpine"
+    current_stable: "3.12"
+    eol_versions:
+      "2.7": "3.12"
+      "3.0": "3.12"
+      "3.1": "3.12"
+      "3.2": "3.12"
+      "3.3": "3.12"
+      "3.4": "3.12"
+      "3.5": "3.12"
+      "3.6": "3.12"
+      "3.7": "3.12"
+      "3.8": "3.12"
+
+  node:
+    patterns:
+      - "node"
+    version_style: "major_only"
+    tag_formats:
+      default: "node:{version}-slim"
+      alpine: "node:{version}-alpine"
+    current_stable: "22"
+    eol_versions:
+      "8": "22"
+      "10": "22"
+      "12": "22"
+      "13": "22"
+      "14": "22"
+      "15": "22"
+      "16": "22"
+      "17": "22"
+      "19": "22"
+      "21": "22"
+
+  golang:
+    patterns:
+      - "golang"
+      - "go:"
+    version_style: "major_minor"
+    tag_formats:
+      default: "golang:{version}-bookworm"
+      alpine: "golang:{version}-alpine"
+    current_stable: "1.23"
+    eol_versions:
+      "1.16": "1.23"
+      "1.17": "1.23"
+      "1.18": "1.23"
+      "1.19": "1.23"
+      "1.20": "1.23"
+      "1.21": "1.23"
+
+  ruby:
+    patterns:
+      - "ruby"
+    version_style: "major_minor"
+    tag_formats:
+      default: "ruby:{version}-slim"
+      alpine: "ruby:{version}-alpine"
+    current_stable: "3.3"
+    eol_versions:
+      "2.5": "3.3"
+      "2.6": "3.3"
+      "2.7": "3.3"
+      "3.0": "3.3"
+
+  php:
+    patterns:
+      - "php"
+    version_style: "major_minor"
+    tag_formats:
+      default: "php:{version}-cli"
+      alpine: "php:{version}-cli-alpine"
+      apache: "php:{version}-apache"
+      fpm: "php:{version}-fpm"
+      fpm_alpine: "php:{version}-fpm-alpine"
+    current_stable: "8.3"
+    eol_versions:
+      "5.6": "8.3"
+      "7.0": "8.3"
+      "7.1": "8.3"
+      "7.2": "8.3"
+      "7.3": "8.3"
+      "7.4": "8.3"
+      "8.0": "8.3"
+
+  openjdk:
+    patterns:
+      - "openjdk"
+      - "temurin"
+      - "adoptopenjdk"
+    version_style: "major_only"
+    tag_formats:
+      default: "eclipse-temurin:{version}-jre-jammy"
+      alpine: "eclipse-temurin:{version}-jre-alpine"
+    current_stable: "21"
+    eol_versions:
+      "8": "21"
+      "9": "21"
+      "10": "21"
+      "11": "21"
+      "12": "21"
+      "13": "21"
+      "14": "21"
+      "15": "21"
+      "16": "21"
+
+  rust:
+    patterns:
+      - "rust"
+    version_style: "major_minor"
+    tag_formats:
+      default: "rust:{version}-slim"
+      alpine: "rust:{version}-alpine"
+    current_stable: "1.85"
+    eol_versions:
+      "1.56": "1.85"
+      "1.57": "1.85"
+      "1.58": "1.85"
+      "1.59": "1.85"
+      "1.60": "1.85"
+      "1.61": "1.85"
+      "1.62": "1.85"
+      "1.63": "1.85"
+      "1.64": "1.85"
+      "1.65": "1.85"
+      "1.66": "1.85"
+      "1.67": "1.85"
+      "1.68": "1.85"
+      "1.69": "1.85"
+      "1.70": "1.85"
+
+  perl:
+    patterns:
+      - "perl"
+    version_style: "major_minor"
+    tag_formats:
+      default: "perl:{version}-slim"
+      alpine: "perl:{version}-alpine"
+    current_stable: "5.40"
+    eol_versions:
+      "5.30": "5.40"
+      "5.32": "5.40"
+      "5.34": "5.40"
+
+  erlang:
+    patterns:
+      - "erlang"
+    version_style: "major_only"
+    tag_formats:
+      default: "erlang:{version}-slim"
+      alpine: "erlang:{version}-alpine"
+    current_stable: "27"
+    eol_versions:
+      "22": "27"
+      "23": "27"
+      "24": "27"
+      "25": "27"
+
+  elixir:
+    patterns:
+      - "elixir"
+    version_style: "major_minor"
+    tag_formats:
+      default: "elixir:{version}-slim"
+      alpine: "elixir:{version}-alpine"
+    current_stable: "1.18"
+    eol_versions:
+      "1.11": "1.18"
+      "1.12": "1.18"
+      "1.13": "1.18"
+      "1.14": "1.18"
+
+  dotnet:
+    patterns:
+      - "dotnet"
+      - "aspnet"
+    version_style: "major_minor"
+    tag_formats:
+      default: "mcr.microsoft.com/dotnet/aspnet:{version}-alpine"
+      sdk: "mcr.microsoft.com/dotnet/sdk:{version}-alpine"
+    current_stable: "8.0"
+    eol_versions:
+      "5.0": "8.0"
+      "6.0": "8.0"
+      "7.0": "8.0"
+
+infrastructure:
+  databases:
+    mongo-express:
+      patterns:
+        - "mongo-express"
+      target: "mongo-express:latest"
+      priority: 100
+
+    mongo:
+      patterns:
+        - "mongo"
+      target: "mongo:7"
+      priority: 99
+
+    redis:
+      patterns:
+        - "redis"
+      target: "redis:7-alpine"
+      priority: 50
+
+    postgres:
+      patterns:
+        - "postgres"
+      target: "postgres:17-alpine"
+      priority: 50
+
+    mysql:
+      patterns:
+        - "mysql"
+      target: "mysql:8.4"
+      priority: 50
+
+    mariadb:
+      patterns:
+        - "mariadb"
+      target: "mariadb:11"
+      priority: 50
+
+    cassandra:
+      patterns:
+        - "cassandra"
+      target: "cassandra:5.0"
+      priority: 50
+
+    couchdb:
+      patterns:
+        - "couchdb"
+      target: "couchdb:3.4"
+      priority: 50
+
+    influxdb:
+      patterns:
+        - "influxdb"
+      target: "influxdb:2.7-alpine"
+      priority: 50
+
+    neo4j:
+      patterns:
+        - "neo4j"
+      target: "neo4j:5-community"
+      priority: 50
+
+    memcached:
+      patterns:
+        - "memcached"
+      target: "memcached:1.6-alpine"
+      priority: 50
+
+    zookeeper:
+      patterns:
+        - "zookeeper"
+      target: "zookeeper:3.9"
+      priority: 50
+
+  web_servers:
+    nginx:
+      patterns:
+        - "nginx"
+      target: "nginx:stable-alpine"
+      priority: 50
+
+    httpd:
+      patterns:
+        - "httpd"
+      target: "httpd:2.4-alpine"
+      priority: 50
+
+    traefik:
+      patterns:
+        - "traefik"
+      target: "traefik:v3.3"
+      priority: 50
+
+    caddy:
+      patterns:
+        - "caddy"
+      target: "caddy:2-alpine"
+      priority: 50
+
+    haproxy:
+      patterns:
+        - "haproxy"
+      target: "haproxy:3.1-alpine"
+      priority: 50
+
+    envoy:
+      patterns:
+        - "envoy"
+      target: "envoyproxy/envoy:v1.32-latest"
+      priority: 50
+
+    kong:
+      patterns:
+        - "kong"
+      target: "kong:3.9"
+      priority: 50
+
+  message_queues:
+    rabbitmq:
+      patterns:
+        - "rabbitmq"
+      target: "rabbitmq:4-alpine"
+      priority: 50
+
+    elasticsearch:
+      patterns:
+        - "elasticsearch"
+      target: "docker.elastic.co/elasticsearch/elasticsearch:8.17.0"
+      priority: 50
+
+    kafka:
+      patterns:
+        - "kafka"
+      target: "bitnami/kafka:3.9"
+      priority: 50
+
+    nats:
+      patterns:
+        - "nats"
+      target: "nats:2.10-alpine"
+      priority: 50
+
+  monitoring:
+    grafana:
+      patterns:
+        - "grafana"
+      target: "grafana/grafana:11.5.2"
+      priority: 50
+
+    prometheus:
+      patterns:
+        - "prometheus"
+      target: "prom/prometheus:v2.53.4"
+      priority: 50
+
+    alertmanager:
+      patterns:
+        - "alertmanager"
+      target: "prom/alertmanager:v0.28.1"
+      priority: 50
+
+    fluentd:
+      patterns:
+        - "fluentd"
+      target: "fluentd:v1.17-debian-1"
+      priority: 50
+
+    kibana:
+      patterns:
+        - "kibana"
+      target: "docker.elastic.co/kibana/kibana:8.17.0"
+      priority: 50
+
+    logstash:
+      patterns:
+        - "logstash"
+      target: "docker.elastic.co/logstash/logstash:8.17.0"
+      priority: 50
+
+  cicd:
+    jenkins:
+      patterns:
+        - "jenkins"
+      target: "jenkins/jenkins:lts-alpine"
+      priority: 50
+
+    vault:
+      patterns:
+        - "vault"
+      target: "hashicorp/vault:latest"
+      priority: 50
+
+    consul:
+      patterns:
+        - "consul"
+      target: "hashicorp/consul:latest"
+      priority: 50
+
+    sonarqube:
+      patterns:
+        - "sonarqube"
+      target: "sonarqube:lts-community"
+      priority: 50
+
+    gitlab:
+      patterns:
+        - "gitlab"
+      target: "gitlab/gitlab-runner:alpine"
+      priority: 50
+
+    gitea:
+      patterns:
+        - "gitea"
+      target: "gitea/gitea:latest"
+      priority: 50
+
+    drone:
+      patterns:
+        - "drone"
+      target: "drone/drone:latest"
+      priority: 50
+
+    nexus:
+      patterns:
+        - "nexus"
+      target: "sonatype/nexus3:latest"
+      priority: 50
+
+  build_tools:
+    maven:
+      patterns:
+        - "maven"
+      target: "maven:3.9-eclipse-temurin-21-alpine"
+      priority: 100
+
+    gradle:
+      patterns:
+        - "gradle"
+      target: "gradle:8-jdk21-alpine"
+      priority: 50
+
+  app_servers:
+    tomcat:
+      patterns:
+        - "tomcat"
+      target: "tomcat:10.1-jre21"
+      priority: 100
+
+    jetty:
+      patterns:
+        - "jetty"
+      target: "jetty:12-jre21"
+      priority: 100
+
+    wildfly:
+      patterns:
+        - "wildfly"
+      target: "wildfly:34-jre21"
+      priority: 100
+
+  cms:
+    phpmyadmin:
+      patterns:
+        - "phpmyadmin"
+      target: "phpmyadmin:latest"
+      priority: 100
+
+    wordpress:
+      patterns:
+        - "wordpress"
+      target: "wordpress:6-php8.3-apache"
+      priority: 50
+
+    nextcloud:
+      patterns:
+        - "nextcloud"
+      target: "nextcloud:29-apache"
+      priority: 50
+
+    drupal:
+      patterns:
+        - "drupal"
+      target: "drupal:11-php8.3-apache"
+      priority: 50
+
+    ghost:
+      patterns:
+        - "ghost"
+      target: "ghost:5-alpine"
+      priority: 50
+
+    joomla:
+      patterns:
+        - "joomla"
+      target: "joomla:5-php8.3-apache"
+      priority: 50
+
+    redmine:
+      patterns:
+        - "redmine"
+      target: "redmine:5-alpine"
+      priority: 50
+
+    mediawiki:
+      patterns:
+        - "mediawiki"
+      target: "mediawiki:lts-fpm"
+      priority: 50
+
+    adminer:
+      patterns:
+        - "adminer"
+      target: "adminer:latest"
+      priority: 50
+
+    matomo:
+      patterns:
+        - "matomo"
+      target: "matomo:5-apache"
+      priority: 50
+
+  cloud_native:
+    registry:
+      patterns:
+        - "registry:"
+      target: "registry:2"
+      priority: 100
+
+    minio:
+      patterns:
+        - "minio"
+      target: "minio/minio:latest"
+      priority: 50
+
+    portainer:
+      patterns:
+        - "portainer"
+      target: "portainer/portainer-ce:2.24.1"
+      priority: 50
+
+    docker:
+      patterns:
+        - "docker"
+      target: "docker:27-cli"
+      priority: 50
+
+  data_processing:
+    solr:
+      patterns:
+        - "solr"
+      target: "solr:9"
+      priority: 50
+
+    flink:
+      patterns:
+        - "flink"
+      target: "flink:1.20"
+      priority: 50
+
+os_bases:
+  alpine:
+    glibc: "alpine:3.21"
+    musl: "alpine:3.21"
+
+  debian:
+    glibc: "debian:bookworm-slim"
+
+  ubuntu:
+    glibc: "ubuntu:24.04"
+
+  centos:
+    glibc: "rockylinux:9-minimal"
+
+  rhel:
+    glibc: "rockylinux:9-minimal"
+
+  rocky:
+    glibc: "rockylinux:9-minimal"
+
+  alma:
+    glibc: "almalinux:9-minimal"
+
+  fedora:
+    glibc: "fedora:41"
+
+  distroless:
+    glibc: "gcr.io/distroless/static-debian12:nonroot"
+
+  scratch:
+    glibc: "scratch"
+
+  wolfi:
+    glibc: "cgr.dev/chainguard/static:latest"
+
+  # New distros added for universal coverage
+  amazon:
+    glibc: "amazonlinux:2023"
+
+  oracle:
+    glibc: "oraclelinux:9-slim"
+
+  opensuse:
+    glibc: "opensuse/leap:15.6"
+
+  sles:
+    glibc: "registry.suse.com/bci/bci-base:15.6"
+
+  photon:
+    glibc: "photon:5.0"
+
+  mariner:
+    glibc: "mcr.microsoft.com/cbl-mariner/base/core:2.0"
+
+  archlinux:
+    glibc: "archlinux:base"
+
+  nixos:
+    glibc: "nixos/nix:latest"
+
+  # Immutable OS families (listed for documentation; AutoPatch skips these)
+  bottlerocket:
+    note: "Immutable OS - use AWS SSM for updates"
+
+  flatcar:
+    note: "Immutable OS - use Flatcar update engine"
+
+  talos:
+    note: "Immutable OS - use Talos upgrade API"
+
+  cos:
+    note: "Immutable OS - managed by GKE"
+
+package_managers:
+  apt_to_apk:
+    build-essential: "build-base"
+    libpq-dev: "postgresql-dev"
+    libssl-dev: "openssl-dev"
+    libffi-dev: "libffi-dev"
+    libxml2-dev: "libxml2-dev"
+    libxslt1-dev: "libxslt-dev"
+    libjpeg-dev: "libjpeg-turbo-dev"
+    libpng-dev: "libpng-dev"
+    libfreetype6-dev: "freetype-dev"
+    libsqlite3-dev: "sqlite-dev"
+    libreadline-dev: "readline-dev"
+    libbz2-dev: "bzip2-dev"
+    libzip-dev: "libzip-dev"
+    git: "git"
+    curl: "curl"
+    wget: "wget"
+    ca-certificates: "ca-certificates"
+    openssl: "openssl"
+    openssh-client: "openssh-client"
+    vim: "vim"
+    nano: "nano"
+    less: "less"
+    grep: "grep"
+    sed: "sed"
+    awk: "gawk"
+    perl: "perl"
+    python3: "python3"
+    python3-dev: "python3-dev"
+    gcc: "gcc"
+    g++: "g++"
+    make: "make"
+    cmake: "cmake"
+    pkg-config: "pkgconfig"
+    libtool: "libtool"
+    autoconf: "autoconf"
+    automake: "automake"
+    bison: "bison"
+    flex: "flex"
+    zlib1g-dev: "zlib-dev"
+    liblz4-dev: "lz4-dev"
+    libsnappy-dev: "snappy-dev"
+    libcurl4-openssl-dev: "curl-dev"
+    libc6-dev: "musl-dev"
+    file: "file"
+    unzip: "unzip"
+    zip: "zip"
+    tar: "tar"
+    gzip: "gzip"
+    xz-utils: "xz"
+
+  apt_to_dnf:
+    build-essential: "gcc gcc-c++ kernel-devel make"
+    libpq-dev: "postgresql-devel"
+    libssl-dev: "openssl-devel"
+    libffi-dev: "libffi-devel"
+    libxml2-dev: "libxml2-devel"
+    libxslt1-dev: "libxslt-devel"
+    libjpeg-dev: "libjpeg-turbo-devel"
+    libpng-dev: "libpng-devel"
+    libfreetype6-dev: "freetype-devel"
+    libsqlite3-dev: "sqlite-devel"
+    libreadline-dev: "readline-devel"
+    libbz2-dev: "bzip2-devel"
+    libzip-dev: "libzip-devel"
+    git: "git"
+    curl: "curl"
+    wget: "wget"
+    ca-certificates: "ca-certificates"
+    openssl: "openssl"
+    openssh-clients: "openssh-clients"
+    vim: "vim"
+    nano: "nano"
+    less: "less"
+    grep: "grep"
+    sed: "sed"
+    awk: "gawk"
+    perl: "perl"
+    python3: "python3"
+    python3-dev: "python3-devel"
+    gcc: "gcc"
+    g++: "gcc-c++"
+    make: "make"
+    cmake: "cmake"
+    pkg-config: "pkgconfig"
+    libtool: "libtool"
+    autoconf: "autoconf"
+    automake: "automake"
+    bison: "bison"
+    flex: "flex"
+    zlib1g-dev: "zlib-devel"
+    liblz4-dev: "lz4-devel"
+    libsnappy-dev: "snappy-devel"
+    libcurl4-openssl-dev: "curl-devel"
+    libc6-dev: "glibc-devel"
+    file: "file"
+    unzip: "unzip"
+    zip: "zip"
+    tar: "tar"
+    gzip: "gzip"
+    xz-utils: "xz"
