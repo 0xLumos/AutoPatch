@@ -1,0 +1,22 @@
+FROM neo4j:4.4
+LABEL maintainer="devops@example.com" \
+      description="Neo4j 4.4 graph database"
+
+EXPOSE 7474 7687
+
+ENV NEO4J_AUTH=none \
+    NEO4JLABS_PLUGINS='["apoc"]' \
+    NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY neo4j.conf /var/lib/neo4j/conf/neo4j.conf || true
+
+VOLUME ["/var/lib/neo4j/data", "/var/lib/neo4j/logs"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:7474 || exit 1
+
+CMD ["neo4j", "console"]

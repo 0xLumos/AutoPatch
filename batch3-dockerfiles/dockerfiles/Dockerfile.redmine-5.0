@@ -1,0 +1,22 @@
+FROM redmine:5.0
+LABEL maintainer="devops@example.com" \
+      description="Redmine 5.0 project management"
+
+EXPOSE 3000
+
+ENV RAILS_ENV=production \
+    RAILS_SERVE_STATIC_FILES=true \
+    SECRET_KEY_BASE=change_me_secret_key
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY Gemfile /usr/src/redmine/Gemfile || true
+
+VOLUME ["/usr/src/redmine/files", "/var/lib/redmine/plugins"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:3000 || exit 1
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

@@ -1,0 +1,22 @@
+FROM prom/prometheus:v2.37.0
+LABEL maintainer="devops@example.com" \
+      description="Prometheus 2.37 time-series database"
+
+EXPOSE 9090
+
+ENV PROMETHEUS_CONFIG_PATH=/etc/prometheus \
+    PROMETHEUS_STORAGE_PATH=/prometheus
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY prometheus.yml /etc/prometheus/prometheus.yml
+RUN echo "# Placeholder for alerting rules" > /etc/prometheus/rules.yml
+
+VOLUME ["/prometheus"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:9090/-/healthy || exit 1
+
+CMD ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus"]

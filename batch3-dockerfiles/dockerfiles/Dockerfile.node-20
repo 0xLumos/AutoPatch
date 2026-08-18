@@ -1,0 +1,4 @@
+FROM node:20
+WORKDIR /app
+RUN npm init -y && npm install express@4.19.0
+CMD ["node", "-e", "console.log(1)"]

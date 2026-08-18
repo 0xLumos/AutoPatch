@@ -1,0 +1,17 @@
+FROM postgres:12
+
+LABEL maintainer="test@example.com" \
+      description="PostgreSQL 12"
+
+ENV POSTGRES_DB=testdb \
+    POSTGRES_USER=postgres \
+    POSTGRES_PASSWORD=postgres
+
+COPY init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=10s --retries=5 \
+    CMD pg_isready -U postgres
+
+CMD ["postgres"]

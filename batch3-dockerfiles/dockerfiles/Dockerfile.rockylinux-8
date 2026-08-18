@@ -1,0 +1,22 @@
+FROM rockylinux:8
+
+LABEL maintainer="test@example.com" \
+      description="Rocky Linux 8 with nodejs"
+
+RUN dnf module enable -y nodejs:14 && \
+    dnf install -y \
+    nodejs \
+    npm \
+    curl \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf/*
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]

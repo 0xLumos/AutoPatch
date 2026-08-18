@@ -1,0 +1,20 @@
+FROM python:3.8-buster
+
+LABEL maintainer="test@example.com" \
+      description="Python 3.8 with Flask and requests"
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir \
+    flask \
+    requests
+
+COPY . .
+
+EXPOSE 5000
+
+ENV FLASK_APP=app.py
+
+CMD ["flask", "run", "--host=0.0.0.0"]
