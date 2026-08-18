@@ -1,0 +1,67 @@
+
+
+ Target   │  scoutorig-5:latest  
+   digest │  e7dd3cf15218        
+
+## Recommended fixes
+
+  Base image is  busybox:1.36 
+
+ Name            │  1.36                                                                     
+ Digest          │  sha256:b7f3d86d6e84fc17718c48bcde1450807faa2d56704205c697b4bd5df7b9e29f  
+ Vulnerabilities │    0C     0H     0M     0L                                                
+ Pushed          │ 3 years ago                                                               
+ Size            │ 2.2 MB                                                                    
+ Packages        │ 1                                                                         
+ Runtime         │ 1.36.1                                                                    
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+
+             Tag              │                  Details                   │    Pushed    │       Vulnerabilities       
+──────────────────────────────┼────────────────────────────────────────────┼──────────────┼─────────────────────────────
+  1.37                        │ Benefits:                                  │ 2 years ago  │    0C     0H     0M     0L  
+ Minor runtime version update │ • Minor runtime version update             │              │                             
+ Also known as:               │ • Tag was pushed more recently             │              │                             
+ • 1.37.0-glibc               │ • Image has similar size                   │              │                             
+ • 1.37-glibc                 │ • Image has same number of vulnerabilities │              │                             
+ • 1.37.0                     │ • Image contains equal number of packages  │              │                             
+                              │                                            │              │                             
+                              │ Image details:                             │              │                             
+                              │ • Size: 2.2 MB                             │              │                             
+                              │ • Runtime: 1.37.0                          │              │                             
+                              │                                            │              │                             
+                              │                                            │              │                             
+                              │                                            │              │                             
+  1.38                        │ Benefits:                                  │ 3 months ago │    0C     0H     0M     0L  
+ Tag is latest                │ • Minor runtime version update             │              │                             
+ Also known as:               │ • Tag was pushed more recently             │              │                             
+ • 1.38.0-glibc               │ • Image has similar size                   │              │                             
+ • 1.38-glibc                 │ • Tag is latest                            │              │                             
+ • 1-glibc                    │ • Image has same number of vulnerabilities │              │                             
+ • 1.38.0                     │ • Image contains equal number of packages  │              │                             
+ • 1                          │                                            │              │                             
+ • latest                     │ Image details:                             │              │                             
+ • unstable                   │ • Size: 2.2 MB                             │              │                             
+ • unstable-glibc             │ • Runtime: 1.38.0                          │              │                             
+                              │                                            │              │                             
+                              │                                            │              │                             
+                              │                                            │              │                             
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 232 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

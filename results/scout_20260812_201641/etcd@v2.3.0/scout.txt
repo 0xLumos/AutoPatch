@@ -1,0 +1,35 @@
+
+
+ Target   │  scoutorig-21:latest  
+   digest │  d478c1a0520f         
+
+## Recommended fixes
+
+  Base image is  golang:1-onbuild 
+
+ Digest          │     
+ Vulnerabilities │     
+ Size            │ 0 B 
+ Packages        │ 0   
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+  ✓ There are no tag recommendations at this time.
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 261 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

@@ -1,0 +1,94 @@
+
+
+ Target   │  scoutorig-3:latest  
+   digest │  998141cf5e70        
+
+## Recommended fixes
+
+  Base image is  alpine:3.19 
+
+ Name            │  3.19                                                                     
+ Digest          │  sha256:b58899f069c47216f6002a6850143dc6fae0d35eb8b0df9300bbe6327b9c2171  
+ Vulnerabilities │    0C     2H     2M     3L                                                
+ Pushed          │ 10 months ago                                                             
+ Size            │ 3.4 MB                                                                    
+ Packages        │ 19                                                                        
+ OS              │ 3.19.9                                                                    
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+
+           Tag           │                        Details                        │    Pushed    │       Vulnerabilities       
+─────────────────────────┼───────────────────────────────────────────────────────┼──────────────┼─────────────────────────────
+  3.21                   │ Benefits:                                             │ 3 months ago │    0C     0H     1M     0L  
+ Tag is preferred tag    │ • Minor OS version update                             │              │           -2     -1     -3  
+ Also known as:          │ • Tag is preferred tag                                │              │                             
+ • 3.21.7                │ • Tag was pushed more recently                        │              │                             
+                         │ • Image has similar size                              │              │                             
+                         │ • Image introduces no new vulnerability but removes 6 │              │                             
+                         │ • Image contains equal number of packages             │              │                             
+                         │                                                       │              │                             
+                         │ Image details:                                        │              │                             
+                         │ • Size: 3.6 MB                                        │              │                             
+                         │ • OS: 3.21.7                                          │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+  3.24                   │ Benefits:                                             │ 1 month ago  │    0C     0H     0M     0L  
+ Tag is latest           │ • Minor OS version update                             │              │           -2     -2     -3  
+ Also known as:          │ • Tag was pushed more recently                        │              │                             
+ • 3.24.1                │ • Image has similar size                              │              │                             
+ • 3                     │ • Tag is latest                                       │              │                             
+ • latest                │ • Image introduces no new vulnerability but removes 7 │              │                             
+                         │ • Image contains similar number of packages           │              │                             
+                         │                                                       │              │                             
+                         │ Image details:                                        │              │                             
+                         │ • Size: 3.8 MB                                        │              │                             
+                         │ • OS: 3.24.1                                          │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+  3.23.5                 │ Benefits:                                             │ 1 month ago  │    0C     0H     1M     0L  
+ Minor OS version update │ • Minor OS version update                             │              │           -2     -1     -3  
+                         │ • Tag was pushed more recently                        │              │                             
+                         │ • Image has similar size                              │              │                             
+                         │ • Image introduces no new vulnerability but removes 6 │              │                             
+                         │ • Image contains similar number of packages           │              │                             
+                         │                                                       │              │                             
+                         │ Image details:                                        │              │                             
+                         │ • Size: 3.8 MB                                        │              │                             
+                         │ • OS: 3.23.5                                          │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+  3.22.5                 │ Benefits:                                             │ 1 month ago  │    0C     0H     1M     0L  
+ Minor OS version update │ • Minor OS version update                             │              │           -2     -1     -3  
+                         │ • Tag was pushed more recently                        │              │                             
+                         │ • Image has similar size                              │              │                             
+                         │ • Image introduces no new vulnerability but removes 6 │              │                             
+                         │ • Image contains similar number of packages           │              │                             
+                         │                                                       │              │                             
+                         │ Image details:                                        │              │                             
+                         │ • Size: 3.8 MB                                        │              │                             
+                         │ • OS: 3.22.5                                          │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+                         │                                                       │              │                             
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 114 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

@@ -1,0 +1,124 @@
+
+
+ Target   │  scoutorig-22:latest  
+   digest │  5147b441b307         
+
+## Recommended fixes
+
+  Base image is  node:22-alpine3.20 
+
+ Name            │  22-alpine3.20                                                            
+ Digest          │  sha256:35d1e2d251585b806c41f71d0933d7ba3afb6374ee3745523c2ae406480f6bc7  
+ Vulnerabilities │    3C    32H    22M     7L    21?                                         
+ Pushed          │ 1 year ago                                                                
+ Size            │ 56 MB                                                                     
+ Packages        │ 221                                                                       
+ Flavor          │ alpine                                                                    
+ OS              │ 3.20                                                                      
+ Runtime         │ 22.16.0                                                                   
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+
+             Tag              │                        Details                         │   Pushed    │          Vulnerabilities           
+──────────────────────────────┼────────────────────────────────────────────────────────┼─────────────┼────────────────────────────────────
+  22-alpine                   │ Benefits:                                              │ 2 weeks ago │    1C     7H     8M     0L         
+ Minor runtime version update │ • Same OS detected                                     │             │    -2    -25    -14     -7    -21  
+ Also known as:               │ • Minor runtime version update                         │             │                                    
+ • 22.23.2-alpine             │ • Minor OS version update                              │             │                                    
+ • 22.23.2-alpine3.24         │ • Image contains 10 fewer packages                     │             │                                    
+ • 22.23-alpine               │ • Tag was pushed more recently                         │             │                                    
+ • 22.23-alpine3.24           │ • Image has similar size                               │             │                                    
+ • 22-alpine3.24              │ • Image introduces no new vulnerability but removes 48 │             │                                    
+ • jod-alpine                 │                                                        │             │                                    
+ • jod-alpine3.24             │ Image details:                                         │             │                                    
+                              │ • Size: 58 MB                                          │             │                                    
+                              │ • Flavor: alpine                                       │             │                                    
+                              │ • OS: 3.24                                             │             │                                    
+                              │ • Runtime: 22.23.2                                     │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+  22-alpine3.23               │ Benefits:                                              │ 2 weeks ago │    1C     7H     9M     0L         
+ Minor runtime version update │ • Same OS detected                                     │             │    -2    -25    -13     -7    -21  
+ Also known as:               │ • Minor runtime version update                         │             │                                    
+ • 22.23.2-alpine3.23         │ • Minor OS version update                              │             │                                    
+ • 22.23-alpine3.23           │ • Image contains 10 fewer packages                     │             │                                    
+ • jod-alpine3.23             │ • Tag was pushed more recently                         │             │                                    
+                              │ • Image has similar size                               │             │                                    
+                              │ • Image introduces no new vulnerability but removes 47 │             │                                    
+                              │                                                        │             │                                    
+                              │ Image details:                                         │             │                                    
+                              │ • Size: 58 MB                                          │             │                                    
+                              │ • Flavor: alpine                                       │             │                                    
+                              │ • OS: 3.23                                             │             │                                    
+                              │ • Runtime: 22.23.2                                     │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+  24-alpine                   │ Benefits:                                              │ 1 week ago  │    1C     6H     9M     2L         
+ Major runtime version update │ • Same OS detected                                     │             │    -2    -26    -13     -5    -21  
+ Also known as:               │ • Minor OS version update                              │             │                                    
+ • 24.19.0-alpine             │ • Image contains 51 fewer packages                     │             │                                    
+ • 24.19.0-alpine3.24         │ • Major runtime version update                         │             │                                    
+ • 24.19-alpine               │ • Tag was pushed more recently                         │             │                                    
+ • 24.19-alpine3.24           │ • Image has similar size                               │             │                                    
+ • lts-alpine                 │ • Image introduces no new vulnerability but removes 46 │             │                                    
+ • lts-alpine3.24             │                                                        │             │                                    
+ • 24-alpine3.24              │ Image details:                                         │             │                                    
+ • krypton-alpine             │ • Size: 58 MB                                          │             │                                    
+ • krypton-alpine3.24         │ • Flavor: alpine                                       │             │                                    
+                              │ • OS: 3.24                                             │             │                                    
+                              │ • Runtime: 24.19.0                                     │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+  24-alpine3.23               │ Benefits:                                              │ 1 week ago  │    1C     6H    10M     2L         
+ Major runtime version update │ • Same OS detected                                     │             │    -2    -26    -12     -5    -21  
+ Also known as:               │ • Minor OS version update                              │             │                                    
+ • 24.19.0-alpine3.23         │ • Image contains 51 fewer packages                     │             │                                    
+ • 24.19-alpine3.23           │ • Major runtime version update                         │             │                                    
+ • lts-alpine3.23             │ • Tag was pushed more recently                         │             │                                    
+ • krypton-alpine3.23         │ • Image has similar size                               │             │                                    
+                              │ • Image introduces no new vulnerability but removes 45 │             │                                    
+                              │                                                        │             │                                    
+                              │ Image details:                                         │             │                                    
+                              │ • Size: 58 MB                                          │             │                                    
+                              │ • Flavor: alpine                                       │             │                                    
+                              │ • OS: 3.23                                             │             │                                    
+                              │ • Runtime: 24.19.0                                     │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+  slim                        │ Benefits:                                              │ 1 week ago  │    2C     5H    11M    29L     5?  
+ Tag is preferred tag         │ • Tag is preferred tag                                 │             │    -1    -27    -11    +22    -16  
+ Also known as:               │ • Tag was pushed more recently                         │             │                                    
+ • 26.7.0-slim                │ • Tag is using slim variant                            │             │                                    
+ • 26.7-slim                  │ • slim was pulled 17K times last month                 │             │                                    
+ • current-slim               │                                                        │             │                                    
+ • 26-slim                    │ Image details:                                         │             │                                    
+ • trixie-slim                │ • Size: 85 MB                                          │             │                                    
+ • 26-trixie-slim             │ • Runtime: 22                                          │             │                                    
+ • 26.7-trixie-slim           │                                                        │             │                                    
+ • 26.7.0-trixie-slim         │                                                        │             │                                    
+ • current-trixie-slim        │                                                        │             │                                    
+                              │                                                        │             │                                    
+                              │                                                        │             │                                    
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 349 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

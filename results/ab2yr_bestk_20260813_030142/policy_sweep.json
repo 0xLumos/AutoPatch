@@ -1,0 +1,71 @@
+{
+  "images_analyzed": 28,
+  "arm": "A",
+  "admit_rate": {
+    "ALL": {
+      "identity-strict": {
+        "literal": "20/28 (71%)",
+        "kernel-only": "20/28 (71%)",
+        "default": "26/28 (93%)"
+      },
+      "count-strict": {
+        "literal": "23/28 (82%)",
+        "kernel-only": "23/28 (82%)",
+        "default": "26/28 (93%)"
+      },
+      "moderate": {
+        "literal": "23/28 (82%)",
+        "kernel-only": "23/28 (82%)",
+        "default": "23/28 (82%)"
+      }
+    },
+    "current": {
+      "identity-strict": {
+        "literal": "20/28 (71%)",
+        "kernel-only": "20/28 (71%)",
+        "default": "26/28 (93%)"
+      },
+      "count-strict": {
+        "literal": "23/28 (82%)",
+        "kernel-only": "23/28 (82%)",
+        "default": "26/28 (93%)"
+      },
+      "moderate": {
+        "literal": "23/28 (82%)",
+        "kernel-only": "23/28 (82%)",
+        "default": "23/28 (82%)"
+      }
+    },
+    "legacy": {
+      "identity-strict": {
+        "literal": "0/0",
+        "kernel-only": "0/0",
+        "default": "0/0"
+      },
+      "count-strict": {
+        "literal": "0/0",
+        "kernel-only": "0/0",
+        "default": "0/0"
+      },
+      "moderate": {
+        "literal": "0/0",
+        "kernel-only": "0/0",
+        "default": "0/0"
+      }
+    }
+  },
+  "reduction_pct": {
+    "ALL": {
+      "n": 27,
+      "mean": 39.46,
+      "median": 48.57,
+      "max": 100.0
+    },
+    "current": {
+      "n": 27,
+      "mean": 39.46,
+      "median": 48.57,
+      "max": 100.0
+    }
+  }
+}

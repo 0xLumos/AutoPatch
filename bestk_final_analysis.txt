@@ -1,0 +1,86 @@
+########## TABLE II (bestk) ##########
+===== TABLE II (gate basis: applicable set, gated, n=39) =====
+scout      acc 0/39  medAcc --  meanAcc --  medAll 0.0  agg --  (raw agg --)
+naive      acc 13/39  medAcc 57.7  meanAcc 62.4  medAll 0.0  agg 74.2  (raw agg 16.7)
+copacetic  acc 12/39  medAcc 8.3  meanAcc 17.8  medAll 0.0  agg 12.7  (raw agg 1.8)
+autopatch  acc 26/39  medAcc 57.1  meanAcc 50.7  medAll 48.1  agg 65.2  (raw agg 25.0)
+admits severity (applicable): Crit 176->31, High 991->420, Total 2825->984
+saved figS1/figS3/figS5 (gate basis) to /home/test/AutoPatch/results/styled
+
+########## CEILING (bestk) ##########
+admits analyzed: 26
+
+===== AGGREGATE, before -> after (admits) =====
+os-pkgs   fixable:   3092 ->      0  removed 100.0%
+os-pkgs   no-fix :  12078 ->  11737  removed   2.8%
+lang-pkgs fixable:   2074 ->   1100  removed  47.0%
+lang-pkgs no-fix :     19 ->     19  removed   0.0%
+TOTAL            :  17263 ->  12856
+
+CEILING CAPTURE (fixable OS-layer removed): 100.0%  (3092 -> 0)
+
+RESIDUAL DECOMPOSITION (12856 findings after):
+  app-layer (lang-pkgs, unreachable by base swap): 1119  (9%)
+  OS-layer no-fix (no fixed version exists):       11737  (91%)
+  OS-layer fixable (left on table):                0  (0%)
+
+===== per-image fixable-OS capture =====
+image                        osfix_b osfix_a  capture app_resid
+lazygit@v0.43.1                   10       0   100.0%        82
+snipe-it@v7.0.10                   4       0   100.0%        67
+healthchecks@v3.4                  1       0   100.0%        34
+changedetection@0.45.14            1       0   100.0%        23
+lazygit@v0.45.2                   10       0   100.0%        72
+snipe-it@v7.1.16                   4       0   100.0%        57
+healthchecks@v3.9                129       0   100.0%        27
+victoriametrics@v1.111.0          50       0   100.0%        30
+snipe-it@v6.3.0                    4       0   100.0%       102
+healthchecks@v3.2                  1       0   100.0%        37
+victoriametrics@v1.102.1          50       0   100.0%         6
+navidrome@v0.54.4                  3       0   100.0%        42
+etcd@v2.3.0                      842       0   100.0%         0
+dolibarr@20.0.3                 1983       0   100.0%         0
+headscale@v0.22.3                  0       0      n/a        55
+restic@v0.17.0                     0       0      n/a        38
+croc@v10.0.11                      0       0      n/a        36
+hugo@v0.122.0                      0       0      n/a        56
+memos@v0.19.1                      0       0      n/a        54
+restic@v0.16.4                     0       0      n/a        41
+lazygit@v0.40.2                    0       0      n/a        80
+croc@v9.6.9                        0       0      n/a        35
+restic@v0.17.3                     0       0      n/a        38
+croc@v10.2.1                       0       0      n/a        31
+sftpgo@v2.6.0                      0       0      n/a        32
+sftpgo@v2.5.1                      0       0      n/a        44
+
+########## NAIVE HEAD-TO-HEAD (bestk) ##########
+=== naive status breakdown ===
+{'accepted': 13, 'patched_build_failed': 25, 'gate_rejected': 1}
+
+=== head-to-head on naive-accepted images (applicable basis) ===
+image                       naive%     ap%  ap_admitted new_base
+headscale@v0.22.3             53.6    53.6  True  
+restic@v0.17.0                54.9    54.9  True  
+lazygit@v0.43.1               57.3    57.3  True  
+restic@v0.16.4                60.0    60.0  True  
+lazygit@v0.40.2               60.0    60.0  True  
+etcd@v2.3.0                  100.0   100.0  True  
+victoriametrics@v1.102.1      42.5    94.3  True  
+sftpgo@v2.6.0                 58.4    58.4  True  
+sftpgo@v2.5.1                 57.7    57.7  True  
+navidrome@v0.54.4             50.6    50.6  True  
+restic@v0.17.3                54.9    54.9  True  
+lazygit@v0.45.2               61.1    61.1  True  
+dolibarr@20.0.3              100.0   100.0  True  
+
+=== naive non-accepted reasons with detail ===
+croc@v10.0.11              patched_build_failed
+kubo@v0.29.0               patched_build_failed
+snipe-it@v7.0.10           patched_build_failed
+healthchecks@v3.4          patched_build_failed
+mealie@v1.11.0             patched_build_failed
+registry@v2.7.0            patched_build_failed
+hugo@v0.122.0              patched_build_failed
+memos@v0.19.1              patched_build_failed
+croc@v9.6.9                patched_build_failed
+kubo@v0.26.0               patched_build_failed

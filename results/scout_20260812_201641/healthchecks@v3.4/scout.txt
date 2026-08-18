@@ -1,0 +1,48 @@
+
+
+ Target   │  scoutorig-7:latest  
+   digest │  e3e4a3a82b12        
+
+## Recommended fixes
+
+  Base image is  python:3.12-slim-bookworm 
+
+ Name            │  3.12-slim-bookworm                                                       
+ Digest          │  sha256:6e13e65c55e33adf203d77ee371cf8bf5d81bd4902ef07565721f46bf44917af  
+ Vulnerabilities │    2C     2H    13M    41L     5?                                         
+ Pushed          │ 1 week ago                                                                
+ Size            │ 45 MB                                                                     
+ Packages        │ 152                                                                       
+ Flavor          │ debian                                                                    
+ OS              │ 12                                                                        
+ Runtime         │ 3.12.13                                                                   
+ Slim            │ ✓                                                                         
+
+                                                                                        
+  | The base image is also available under the supported tag(s) 3.12.13-slim-bookworm.  
+  If                                                                                    
+  | you want to display recommendations specifically for a different tag, please re-run 
+  | the command using the --tag flag.                                                   
+
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+  ✓ There are no tag recommendations at this time.
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 241 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

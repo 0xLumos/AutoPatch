@@ -1,0 +1,70 @@
+{
+  "arm_B_ai_fallbacks": 0,
+  "arms": {
+    "A": {
+      "ALL": {
+        "admit_rate": 0.667,
+        "admitted_reduction_pct": {
+          "max": 100.0,
+          "mean": 40.98,
+          "median": 48.98,
+          "min": -4.66,
+          "n": 26,
+          "regressions": 3,
+          "stdev": 29.63
+        },
+        "build_rate": 0.667,
+        "candidate_reduction_pct": {
+          "max": 100.0,
+          "mean": 40.98,
+          "median": 48.98,
+          "min": -4.66,
+          "n": 26,
+          "regressions": 3,
+          "stdev": 29.63
+        },
+        "images": 39,
+        "n_accepted": 26,
+        "n_built": 26
+      },
+      "legacy": {
+        "admit_rate": 0.667,
+        "admitted_reduction_pct": {
+          "max": 100.0,
+          "mean": 40.98,
+          "median": 48.98,
+          "min": -4.66,
+          "n": 26,
+          "regressions": 3,
+          "stdev": 29.63
+        },
+        "build_rate": 0.667,
+        "candidate_reduction_pct": {
+          "max": 100.0,
+          "mean": 40.98,
+          "median": 48.98,
+          "min": -4.66,
+          "n": 26,
+          "regressions": 3,
+          "stdev": 29.63
+        },
+        "images": 39,
+        "n_accepted": 26,
+        "n_built": 26
+      }
+    }
+  },
+  "generated": "2026-08-13T12:03:29Z",
+  "images_total": 39,
+  "note": "candidate_reduction_pct is measured over all BUILT images regardless of the acceptance gate; it is the headline 'how much does base remediation reduce OS-layer CVE exposure' number. admitted_reduction_pct is measured over images the operational count-strict gate accepted: over applicable findings (host-kernel and no-fix excluded, KEV never excluded), CRITICAL and HIGH counts non-increasing, total strictly decreasing, any new KEV CVE a hard block. Admission under the identity-strict Eq. (1) bound and under other applicability policies is recomputed post-hoc by experiments/policy_sweep.py from the persisted scans. Both are reported so neither overstates nor understates the method. Reductions with an undefined baseline (0 CVEs) are excluded; regressions are retained.",
+  "paired": {
+    "A_better": 0,
+    "B_better": 0,
+    "delta_B_minus_A": {
+      "n": 0
+    },
+    "n": 0,
+    "per_image": [],
+    "ties": 0
+  }
+}

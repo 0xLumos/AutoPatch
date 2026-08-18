@@ -1,0 +1,7 @@
+# Runtime dependencies for AutoPatch.
+# Upper bounds prevent surprise major upgrades; floor pins the security-
+# patched releases that the audit recommended.
+pyyaml>=6.0,<7.0
+requests>=2.32.0,<3.0
+urllib3>=2.2.2,<3.0
+dpkt==1.9.8

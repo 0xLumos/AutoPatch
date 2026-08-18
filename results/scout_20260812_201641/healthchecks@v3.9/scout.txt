@@ -1,0 +1,116 @@
+
+
+ Target   │  scoutorig-36:latest  
+   digest │  3beaef52c1fe         
+
+## Recommended fixes
+
+  Base image is  python:3-slim 
+
+ Name            │  3-slim                                                                   
+ Digest          │  sha256:b0c5cb8792bf58879f532c1e10f44e1af02d72735758374198f9717d67a7ae52  
+ Vulnerabilities │    2C    32H    41M    56L     5?                                         
+ Pushed          │ 2 years ago                                                               
+ Size            │ 44 MB                                                                     
+ Packages        │ 144                                                                       
+ Flavor          │ debian                                                                    
+ OS              │ 12                                                                        
+ Runtime         │ 3.13.0                                                                    
+ Slim            │ ✓                                                                         
+
+                                                                                        
+  | The base image is also available under the supported tag(s) 3-slim-bookworm, 3.13-  
+  | slim,                                                                               
+  | 3.13-slim-bookworm, slim, slim-bookworm. If you want to display recommendations     
+  | specifically for a different tag, please re-run the command using the --tag flag.   
+
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+
+           Tag            │                        Details                         │   Pushed   │          Vulnerabilities           
+──────────────────────────┼────────────────────────────────────────────────────────┼────────────┼────────────────────────────────────
+  3-slim                  │ Benefits:                                              │ 1 week ago │    2C     5H     6M    29L     5?  
+ Newer image for same tag │ • Same OS detected                                     │            │          -27    -35    -27         
+ Also known as:           │ • Minor runtime version update                         │            │                                    
+ • 3.14.7-slim            │ • Newer image for same tag                             │            │                                    
+ • 3.14-slim              │ • Image is smaller by 650 KB                           │            │                                    
+ • slim                   │ • Image contains 2 fewer packages                      │            │                                    
+ • slim-trixie            │ • Tag was pushed more recently                         │            │                                    
+ • 3-slim-trixie          │ • Image introduces no new vulnerability but removes 89 │            │                                    
+ • 3.14-slim-trixie       │ • Tag is using slim variant                            │            │                                    
+ • 3.14.7-slim-trixie     │ • 3-slim was pulled 26K times last month               │            │                                    
+                          │                                                        │            │                                    
+                          │ Image details:                                         │            │                                    
+                          │ • Size: 43 MB                                          │            │                                    
+                          │ • Runtime: 3.14.7                                      │            │                                    
+                          │                                                        │            │                                    
+                          │                                                        │            │                                    
+                          │                                                        │            │                                    
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+
+             Tag              │                            Details                            │   Pushed   │          Vulnerabilities           
+──────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────┼────────────────────────────────────
+  3.13.15-slim                │ Benefits:                                                     │ 2 days ago │    2C     5H     6M    29L     5?  
+ Minor runtime version update │ • Same OS detected                                            │            │          -27    -35    -27         
+ Also known as:               │ • Minor runtime version update                                │            │                                    
+ • 3.13.15-slim-trixie        │ • Image is smaller by 1.1 MB                                  │            │                                    
+                              │ • Image contains 2 fewer packages                             │            │                                    
+                              │ • Tag was pushed more recently                                │            │                                    
+                              │ • Image introduces no new vulnerability but removes 89        │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 43 MB                                                 │            │                                    
+                              │ • Runtime: 3.13.15                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.13-slim                   │ Benefits:                                                     │ 1 week ago │    2C     2H     5M    29L     5?  
+ Minor runtime version update │ • Same OS detected                                            │            │          -30    -36    -27         
+ Also known as:               │ • Minor runtime version update                                │            │                                    
+ • 3.13-slim-trixie           │ • Image is smaller by 1.1 MB                                  │            │                                    
+                              │ • Image contains 20 fewer packages                            │            │                                    
+                              │ • Tag was pushed more recently                                │            │                                    
+                              │ • Image introduces no new vulnerability but removes 93        │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 43 MB                                                 │            │                                    
+                              │ • Runtime: 3.13                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  alpine                      │ Benefits:                                                     │ 1 week ago │    0C     3H     1M     0L         
+ Tag is preferred tag         │ • Minor runtime version update                                │            │    -2    -29    -40    -56     -5  
+ Also known as:               │ • Image is smaller by 25 MB                                   │            │                                    
+ • alpine3.24                 │ • Image contains 85 fewer packages                            │            │                                    
+ • 3.14.7-alpine              │ • Tag is preferred tag                                        │            │                                    
+ • 3.14.7-alpine3.24          │ • Tag was pushed more recently                                │            │                                    
+ • 3.14-alpine                │ • Image introduces no new vulnerability but removes 127       │            │                                    
+ • 3.14-alpine3.24            │ • alpine is the 7th most popular tag with 41K pulls per month │            │                                    
+ • 3-alpine                   │                                                               │            │                                    
+ • 3-alpine3.24               │ Image details:                                                │            │                                    
+                              │ • Size: 18 MB                                                 │            │                                    
+                              │ • Flavor: alpine                                              │            │                                    
+                              │ • OS: 3.24                                                    │            │                                    
+                              │ • Runtime: 3.14.7                                             │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 239 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

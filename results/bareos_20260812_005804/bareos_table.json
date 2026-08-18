@@ -1,0 +1,143 @@
+[
+ {
+  "image": "bareos-alma8",
+  "accepted": false,
+  "app_before": 32,
+  "raw_before": 32,
+  "reason": "Applicable HIGH count increased: 11 -> 43; Applicable total did not decrease: 32 -> 67"
+ },
+ {
+  "image": "bareos-alpine312",
+  "accepted": true,
+  "app_before": 1,
+  "raw_before": 1,
+  "from": "alpine:3.12",
+  "to": "alpine:3.21",
+  "app_after": 0,
+  "raw_after": 0
+ },
+ {
+  "image": "bareos-alpine314",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 0,
+  "reason": "Applicable total did not decrease: 0 -> 0"
+ },
+ {
+  "image": "bareos-alpine316",
+  "accepted": true,
+  "app_before": 4,
+  "raw_before": 4,
+  "from": "alpine:3.16",
+  "to": "alpine:3.21",
+  "app_after": 0,
+  "raw_after": 0
+ },
+ {
+  "image": "bareos-alpine318",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 0,
+  "reason": "Applicable total did not decrease: 0 -> 0"
+ },
+ {
+  "image": "bareos-amazonlinux2",
+  "accepted": false,
+  "app_before": 13,
+  "raw_before": 13,
+  "reason": "Applicable HIGH count increased: 10 -> 15; Applicable total did not decrease: 13 -> 16"
+ },
+ {
+  "image": "bareos-centos7",
+  "accepted": false,
+  "app_before": 153,
+  "raw_before": 1559,
+  "reason": "Applicable total did not decrease: 153 -> 153"
+ },
+ {
+  "image": "bareos-debian10",
+  "accepted": true,
+  "app_before": 8,
+  "raw_before": 68,
+  "from": "debian:10",
+  "to": "debian:12",
+  "app_after": 0,
+  "raw_after": 168
+ },
+ {
+  "image": "bareos-debian11",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 197,
+  "reason": "Applicable total did not decrease: 0 -> 0"
+ },
+ {
+  "image": "bareos-debian11-slim",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 197,
+  "reason": "Applicable total did not decrease: 0 -> 0"
+ },
+ {
+  "image": "bareos-debian9",
+  "accepted": true,
+  "app_before": 2,
+  "raw_before": 71,
+  "from": "debian:9",
+  "to": "debian:12",
+  "app_after": 0,
+  "raw_after": 168
+ },
+ {
+  "image": "bareos-fedora35",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 0,
+  "reason": "Applicable total did not decrease: 0 -> 0"
+ },
+ {
+  "image": "bareos-oracle8",
+  "accepted": true,
+  "app_before": 11,
+  "raw_before": 11,
+  "from": "oraclelinux:8",
+  "to": "oraclelinux:9",
+  "app_after": 3,
+  "raw_after": 3
+ },
+ {
+  "image": "bareos-rocky8",
+  "accepted": false,
+  "app_before": 222,
+  "raw_before": 222,
+  "reason": "Applicable HIGH count increased: 91 -> 141; Applicable total did not decrease: 222 -> 301"
+ },
+ {
+  "image": "bareos-ubuntu1604",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 0,
+  "reason": "Applicable total did not decrease: 0 -> 4"
+ },
+ {
+  "image": "bareos-ubuntu1804",
+  "accepted": false,
+  "app_before": 0,
+  "raw_before": 0,
+  "reason": "Applicable total did not decrease: 0 -> 4"
+ },
+ {
+  "image": "bareos-ubuntu2004",
+  "accepted": false,
+  "app_before": 2,
+  "raw_before": 2,
+  "reason": "Applicable total did not decrease: 2 -> 4"
+ },
+ {
+  "image": "bareos-ubuntu2204",
+  "accepted": false,
+  "app_before": 4,
+  "raw_before": 29,
+  "reason": "Applicable total did not decrease: 4 -> 4"
+ }
+]

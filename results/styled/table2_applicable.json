@@ -1,0 +1,47 @@
+{
+ "autopatch": {
+  "n_acc": 26,
+  "med_acc": 57.12684599156118,
+  "mean_acc": 50.67635725590968,
+  "med_all": 48.113207547169814,
+  "agg": 65.16814159292035,
+  "agg_raw": 25.047069898799723,
+  "app_before": 2825,
+  "app_after": 984,
+  "raw_before": 16996,
+  "raw_after": 12739
+ },
+ "copacetic": {
+  "n_acc": 12,
+  "med_acc": 8.300709219858154,
+  "mean_acc": 17.844045384246993,
+  "med_all": 0.0,
+  "agg": 12.73100616016427,
+  "agg_raw": 1.8455127251079007,
+  "app_before": 974,
+  "app_after": 850,
+  "raw_before": 6719,
+  "raw_after": 6595
+ },
+ "naive": {
+  "n_acc": 13,
+  "med_acc": 57.692307692307686,
+  "mean_acc": 62.37956032179574,
+  "med_all": 0.0,
+  "agg": 74.21348314606742,
+  "agg_raw": 16.730719959005892,
+  "app_before": 1780,
+  "app_after": 459,
+  "raw_before": 7806,
+  "raw_after": 6500
+ },
+ "scout": {
+  "n_acc": 0,
+  "med_acc": null,
+  "mean_acc": null,
+  "med_all": 0.0,
+  "agg": null,
+  "agg_raw": null
+ },
+ "n": 39
+}

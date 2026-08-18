@@ -1,0 +1,191 @@
+
+
+ Target   │  scoutorig-25:latest  
+   digest │  299070bd4dce         
+
+## Recommended fixes
+
+  Base image is  python:3.8.12 
+
+ Name            │  3.8.12                                                                   
+ Digest          │  sha256:60d1cda1542582095795c25bff869b0c615e2a913c4026ed0313ede156b60468  
+ Vulnerabilities │   37C   276H   383M   360L    78?                                         
+ Pushed          │ 4 years ago                                                               
+ Size            │ 348 MB                                                                    
+ Packages        │ 569                                                                       
+ Flavor          │ debian                                                                    
+ OS              │ 11                                                                        
+ Runtime         │ 3.8.12                                                                    
+
+
+Refresh base image
+  Rebuild the image using a newer base image version. Updating this may result in breaking changes.
+
+  ✓ This image version is up to date.
+
+
+Change base image
+  The list displays new recommended tags in descending order, where the top results are rated as most suitable.
+
+
+             Tag              │                            Details                            │   Pushed   │          Vulnerabilities           
+──────────────────────────────┼───────────────────────────────────────────────────────────────┼────────────┼────────────────────────────────────
+  alpine                      │ Benefits:                                                     │ 1 week ago │    0C     3H     1M     0L         
+ Tag is preferred tag         │ • Minor runtime version update                                │            │   -37   -273   -382   -360    -78  
+ Also known as:               │ • Image is smaller by 314 MB                                  │            │                                    
+ • alpine3.24                 │ • Image contains 510 fewer packages                           │            │                                    
+ • 3.14.7-alpine              │ • Tag is preferred tag                                        │            │                                    
+ • 3.14.7-alpine3.24          │ • Tag was pushed more recently                                │            │                                    
+ • 3.14-alpine                │ • Image introduces no new vulnerability but removes 1052      │            │                                    
+ • 3.14-alpine3.24            │ • alpine is the 7th most popular tag with 41K pulls per month │            │                                    
+ • 3-alpine                   │                                                               │            │                                    
+ • 3-alpine3.24               │ Image details:                                                │            │                                    
+                              │ • Size: 18 MB                                                 │            │                                    
+                              │ • Flavor: alpine                                              │            │                                    
+                              │ • OS: 3.24                                                    │            │                                    
+                              │ • Runtime: 3.14.7                                             │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.14.7-slim                 │ Benefits:                                                     │ 1 week ago │    2C     5H     6M    29L     5?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -35   -271   -377   -331    -73  
+ Also known as:               │ • Image is smaller by 290 MB                                  │            │                                    
+ • 3.14-slim                  │ • Image contains 427 fewer packages                           │            │                                    
+ • 3-slim                     │ • Tag was pushed more recently                                │            │                                    
+ • slim                       │ • Image introduces no new vulnerability but removes 1014      │            │                                    
+ • slim-trixie                │ • Tag is using slim variant                                   │            │                                    
+ • 3-slim-trixie              │                                                               │            │                                    
+ • 3.14-slim-trixie           │ Image details:                                                │            │                                    
+ • 3.14.7-slim-trixie         │ • Size: 43 MB                                                 │            │                                    
+                              │ • Runtime: 3.14.7                                             │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.13.15-slim                │ Benefits:                                                     │ 2 days ago │    2C     5H     6M    29L     5?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -35   -271   -377   -331    -73  
+ Also known as:               │ • Image is smaller by 290 MB                                  │            │                                    
+ • 3.13.15-slim-trixie        │ • Image contains 427 fewer packages                           │            │                                    
+                              │ • Tag was pushed more recently                                │            │                                    
+                              │ • Image introduces no new vulnerability but removes 1014      │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 43 MB                                                 │            │                                    
+                              │ • Runtime: 3.13.15                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.12.13-slim                │ Benefits:                                                     │ 1 week ago │    2C     2H     9M    30L     5?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -35   -274   -374   -330    -73  
+ Also known as:               │ • Image is smaller by 290 MB                                  │            │                                    
+ • 3.12-slim                  │ • Image contains 445 fewer packages                           │            │                                    
+ • 3.12-slim-trixie           │ • Tag was pushed more recently                                │            │                                    
+ • 3.12.13-slim-trixie        │ • Image introduces no new vulnerability but removes 1013      │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 43 MB                                                 │            │                                    
+                              │ • Runtime: 3.12.13                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.11.15-slim                │ Benefits:                                                     │ 1 week ago │    2C     4H    10M    30L     5?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -35   -272   -373   -330    -73  
+ Also known as:               │ • Image is smaller by 288 MB                                  │            │                                    
+ • 3.11-slim                  │ • Image contains 426 fewer packages                           │            │                                    
+ • 3.11-slim-trixie           │ • Tag was pushed more recently                                │            │                                    
+ • 3.11.15-slim-trixie        │ • Image introduces no new vulnerability but removes 1010      │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 46 MB                                                 │            │                                    
+                              │ • Runtime: 3.11.15                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.10.20-slim                │ Benefits:                                                     │ 1 week ago │    2C     4H    11M    30L     5?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -35   -272   -372   -330    -73  
+ Also known as:               │ • Image is smaller by 289 MB                                  │            │                                    
+ • 3.10-slim                  │ • Image contains 426 fewer packages                           │            │                                    
+ • 3.10-slim-trixie           │ • Tag was pushed more recently                                │            │                                    
+ • 3.10.20-slim-trixie        │ • Image introduces no new vulnerability but removes 1009      │            │                                    
+                              │ • Tag is using slim variant                                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 45 MB                                                 │            │                                    
+                              │ • Runtime: 3.10.20                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.12.13                     │ Benefits:                                                     │ 1 week ago │    4C    21H    20M   197L    47?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -33   -255   -363   -163    -31  
+ Also known as:               │ • Tag was pushed more recently                                │            │                                    
+ • 3.12                       │ • Image has similar size                                      │            │                                    
+ • 3.12-trixie                │ • Image introduces no new vulnerability but removes 814       │            │                                    
+                              │ • Image contains similar number of packages                   │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 411 MB                                                │            │                                    
+                              │ • Runtime: 3.12.13                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.14.7                      │ Benefits:                                                     │ 1 week ago │    4C    24H    17M   196L    47?  
+ Tag is latest                │ • Minor runtime version update                                │            │   -33   -252   -366   -164    -31  
+ Also known as:               │ • Tag was pushed more recently                                │            │                                    
+ • 3.14                       │ • Image has similar size                                      │            │                                    
+ • 3                          │ • Tag is latest                                               │            │                                    
+ • trixie                     │ • Image introduces no new vulnerability but removes 815       │            │                                    
+ • latest                     │                                                               │            │                                    
+ • 3-trixie                   │ Image details:                                                │            │                                    
+ • 3.14-trixie                │ • Size: 415 MB                                                │            │                                    
+ • 3.14.7-trixie              │ • Runtime: 3.14.7                                             │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.13.15                     │ Benefits:                                                     │ 2 days ago │    4C    24H    17M   196L    47?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -33   -252   -366   -164    -31  
+ Also known as:               │ • Tag was pushed more recently                                │            │                                    
+ • 3.13                       │ • Image has similar size                                      │            │                                    
+                              │ • Image introduces no new vulnerability but removes 815       │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 413 MB                                                │            │                                    
+                              │ • Runtime: 3.13.15                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.11.15                     │ Benefits:                                                     │ 1 week ago │    4C    23H    21M   197L    47?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -33   -253   -362   -163    -31  
+ Also known as:               │ • Tag was pushed more recently                                │            │                                    
+ • 3.11                       │ • Image has similar size                                      │            │                                    
+ • 3.11-trixie                │ • Image introduces no new vulnerability but removes 811       │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 409 MB                                                │            │                                    
+                              │ • Runtime: 3.11.15                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+  3.10.20                     │ Benefits:                                                     │ 1 week ago │    4C    23H    22M   197L    47?  
+ Minor runtime version update │ • Minor runtime version update                                │            │   -33   -253   -361   -163    -31  
+ Also known as:               │ • Tag was pushed more recently                                │            │                                    
+ • 3.10                       │ • Image has similar size                                      │            │                                    
+ • 3.10-trixie                │ • Image introduces no new vulnerability but removes 810       │            │                                    
+                              │                                                               │            │                                    
+                              │ Image details:                                                │            │                                    
+                              │ • Size: 406 MB                                                │            │                                    
+                              │ • Runtime: 3.10.20                                            │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+                              │                                                               │            │                                    
+
+    i New version 1.24.0 available (installed version is 1.23.1) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    ✓ Image stored for indexing
+    ...Indexing
+    ✓ Indexed 701 packages
+    ✓ Provenance obtained from attestation
+    i Base image was auto-detected. To get more accurate recommendations, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+      Alternatively, use  docker scout recommendations --tag <base image tag>  to pass a specific base image tag.

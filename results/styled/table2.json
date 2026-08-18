@@ -1,0 +1,37 @@
+{
+ "n": 39,
+ "autopatch": {
+  "n_acc": 26,
+  "med_acc": 48.98450946643718,
+  "mean_acc": 40.79725898701441,
+  "med_all": 18.07228915662651,
+  "agg": 25.528587151711758,
+  "sum_before": 17263,
+  "sum_after": 12856
+ },
+ "copacetic": {
+  "n_acc": 12,
+  "med_acc": 3.5669248784002905,
+  "mean_acc": 7.319688884812346,
+  "med_all": 0.0,
+  "agg": 1.8007551553877454,
+  "sum_before": 6886,
+  "sum_after": 6762
+ },
+ "naive": {
+  "n_acc": 13,
+  "med_acc": 54.216867469879524,
+  "mean_acc": -142.60943258794072,
+  "med_all": 0.0,
+  "agg": 18.035426731078907,
+  "sum_before": 8073,
+  "sum_after": 6617
+ },
+ "scout": {
+  "n_acc": 0,
+  "med_acc": null,
+  "mean_acc": null,
+  "med_all": 0.0,
+  "agg": null
+ }
+}
