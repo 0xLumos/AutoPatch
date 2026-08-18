@@ -1,0 +1,20 @@
+FROM gradle:7.6-jdk11
+LABEL maintainer="devops@example.com" \
+      description="Gradle 7.6 build tool"
+
+WORKDIR /app
+
+ENV GRADLE_HOME=/opt/gradle \
+    GRADLE_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY build.gradle /app/build.gradle || true
+RUN echo "plugins { id 'java' }" > /app/build.gradle
+
+VOLUME ["/home/gradle/.gradle", "/app"]
+
+CMD ["gradle", "build"]

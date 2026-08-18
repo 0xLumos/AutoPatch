@@ -1,0 +1,22 @@
+FROM prom/alertmanager:v0.25.0
+LABEL maintainer="devops@example.com" \
+      description="Prometheus Alertmanager 0.25"
+
+EXPOSE 9093
+
+ENV ALERTMANAGER_CONFIG_PATH=/etc/alertmanager \
+    ALERTMANAGER_STORAGE_PATH=/alertmanager
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY alertmanager.yml /etc/alertmanager/alertmanager.yml
+RUN echo "# Alerting rules placeholder" >> /etc/alertmanager/alertmanager.yml
+
+VOLUME ["/alertmanager"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:9093/-/healthy || exit 1
+
+CMD ["--config.file=/etc/alertmanager/alertmanager.yml", "--storage.path=/alertmanager"]

@@ -1,0 +1,22 @@
+FROM docker.elastic.co/kibana/kibana:7.17.0
+LABEL maintainer="devops@example.com" \
+      description="Kibana 7.17 visualization platform"
+
+EXPOSE 5601
+
+ENV ELASTICSEARCH_HOSTS=http://elasticsearch:9200 \
+    ELASTICSEARCH_USERNAME=elastic \
+    KIBANA_DEFAULTAPPID=discover \
+    xpack.security.enabled=false
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY kibana.yml /usr/share/kibana/config/kibana.yml || true
+RUN echo "# Kibana configuration placeholder" >> /usr/share/kibana/config/kibana.yml
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:5601/api/status || exit 1
+
+CMD ["/bin/bash", "-c", "/usr/local/bin/kibana-docker"]

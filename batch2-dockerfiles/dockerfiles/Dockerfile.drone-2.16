@@ -1,0 +1,22 @@
+FROM drone/drone:2.16
+LABEL maintainer="devops@example.com" \
+      description="Drone 2.16 CI/CD platform"
+
+EXPOSE 80 443
+
+ENV DRONE_SERVER_HOST=localhost \
+    DRONE_SERVER_PROTO=http \
+    DRONE_RPC_SECRET=drone_secret_rpc \
+    DRONE_AGENTS_ENABLED=true \
+    DRONE_LOGS_TRACE=false
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+VOLUME ["/data", "/var/lib/drone"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
+
+CMD ["/bin/drone"]

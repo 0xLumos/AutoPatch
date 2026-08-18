@@ -1,0 +1,21 @@
+FROM minio/minio:RELEASE.2023-01-02T09-40-09Z
+LABEL maintainer="devops@example.com" \
+      description="MinIO 2023 object storage"
+
+EXPOSE 9000 9001
+
+ENV MINIO_ROOT_USER=minioadmin \
+    MINIO_ROOT_PASSWORD=minioadmin \
+    MINIO_ACCESS_KEY=minioadmin \
+    MINIO_SECRET_KEY=minioadmin
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+VOLUME ["/data", "/root/.minio"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:9000/minio/health/live || exit 1
+
+CMD ["server", "/data", "--console-address", ":9001"]

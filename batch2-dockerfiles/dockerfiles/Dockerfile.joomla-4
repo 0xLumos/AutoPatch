@@ -1,0 +1,3 @@
+FROM joomla:4
+WORKDIR /app
+EXPOSE 80

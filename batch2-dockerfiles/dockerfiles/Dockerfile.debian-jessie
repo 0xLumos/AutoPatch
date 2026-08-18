@@ -1,0 +1,3 @@
+FROM debian:jessie
+WORKDIR /app
+RUN echo debian jessie

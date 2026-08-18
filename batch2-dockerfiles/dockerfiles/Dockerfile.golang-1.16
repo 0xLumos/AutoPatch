@@ -1,0 +1,18 @@
+FROM golang:1.16
+
+LABEL maintainer="test@example.com" \
+      description="Go 1.16 with simple build"
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+EXPOSE 8080
+
+CMD ["./app"]

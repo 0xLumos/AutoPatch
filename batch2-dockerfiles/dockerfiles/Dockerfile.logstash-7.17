@@ -1,0 +1,23 @@
+FROM docker.elastic.co/logstash/logstash:7.17.0
+LABEL maintainer="devops@example.com" \
+      description="Logstash 7.17 log shipper"
+
+EXPOSE 5044 9600 5000/udp
+
+ENV LS_JAVA_OPTS="-Xmx256m -Xms256m" \
+    xpack.monitoring.enabled=false \
+    xpack.management.enabled=false
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY logstash.conf /usr/share/logstash/pipeline/logstash.conf || true
+RUN echo "# Logstash pipeline configuration" > /usr/share/logstash/pipeline/logstash.conf
+
+VOLUME ["/usr/share/logstash/data", "/usr/share/logstash/pipeline"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:9600 || exit 1
+
+CMD ["/usr/share/logstash/bin/logstash", "-f", "/usr/share/logstash/pipeline/logstash.conf"]

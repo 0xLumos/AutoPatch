@@ -1,0 +1,22 @@
+FROM httpd:2.4.49
+LABEL maintainer="devops@example.com" \
+      description="Apache httpd 2.4.49 web server"
+
+EXPOSE 80 443
+
+ENV APACHE_RUN_DIR=/var/run/apache2 \
+    APACHE_RUN_USER=www-data \
+    APACHE_RUN_GROUP=www-data \
+    APACHE_PID_FILE=/var/run/apache2/apache2.pid
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+RUN echo "# Placeholder for custom Apache configuration" >> /usr/local/apache2/conf/extra/httpd-vhosts.conf
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
+CMD ["httpd-foreground"]
