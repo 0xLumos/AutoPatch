@@ -1,0 +1,3 @@
+FROM rust:1.75
+WORKDIR /app
+CMD ["rustc", "--version"]

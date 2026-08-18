@@ -1,0 +1,22 @@
+FROM traefik:v2.8
+LABEL maintainer="devops@example.com" \
+      description="Traefik 2.8 reverse proxy"
+
+EXPOSE 80 443 8080
+
+ENV TRAEFIK_GLOBAL_CHECKNEWVERSION=false \
+    TRAEFIK_GLOBAL_SENDANONYMOUSUSAGE=false \
+    TRAEFIK_API_INSECURE=true
+
+RUN apk add --no-cache curl
+
+COPY traefik.yml /etc/traefik/traefik.yml || true
+RUN echo "global:" > /etc/traefik/traefik.yml && \
+    echo "  checkNewVersion: false" >> /etc/traefik/traefik.yml
+
+VOLUME ["/etc/traefik"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8080/ping || exit 1
+
+CMD ["--api.dashboard=true", "--api.insecure=true", "--entrypoints.web.address=:80"]
