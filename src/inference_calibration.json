@@ -1,0 +1,28 @@
+{
+  "_comment": "Per-signal log-likelihood weights for InferenceResult.confidence. Each weight is added to a running sum; the final confidence is sigmoid(sum), i.e. a real probability in [0, 1]. fit_method='prior' means these are documented prior assumptions; replace with logistic-regression coefficients fit on the labeled dataset by setting fit_method='logistic_regression' and updating fit_date.",
+  "schema_version": "1.0",
+  "fit_method": "prior",
+  "fit_date": null,
+  "fit_dataset": null,
+  "weights": {
+    "os_family_purl": 1.10,
+    "os_family_metadata": 0.55,
+    "os_family_contradiction": -0.80,
+    "language_from_sbom": 0.70,
+    "language_override": 2.20,
+    "libc_explicit": 0.40,
+    "variant_detected": 0.20
+  },
+  "default_intercept": -0.50,
+  "min_confidence_threshold": 0.50,
+  "_weight_rationale": {
+    "os_family_purl": "Strong signal. PURLs are emitted by Trivy's parser; rarely wrong unless the SBOM was tampered with.",
+    "os_family_metadata": "Moderate signal. Metadata component name (e.g. 'ubuntu:22.04') can be misleading on custom images.",
+    "os_family_contradiction": "Penalty. When purls say one family but components say another the SBOM is inconsistent; reduce overall confidence.",
+    "language_from_sbom": "Moderate signal. SBOM component names and ecosystems are reliable but the version may be transitive rather than authoritative.",
+    "language_override": "Strongest signal. The operator told us explicitly.",
+    "libc_explicit": "Small positive. Knowing the libc rules out a class of incorrect targets but does not by itself confirm the rest.",
+    "variant_detected": "Small positive. Variant (apache/nginx/etc.) is a niche refinement.",
+    "default_intercept": "Slight negative prior so a totally signal-free SBOM ends up around 0.38 (below the 0.5 threshold) and triggers low-confidence handling."
+  }
+}

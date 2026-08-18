@@ -1,0 +1,77 @@
+# Bayesian image-identity calibration (P5-3).
+#
+# Parameters for src/bayesian_inference.py. Edit here rather than in
+# source so the numbers can be refit on a labelled corpus and attested
+# without a code change. The loader shallow-merges each section over the
+# embedded defaults, so a partial file only overrides what it lists.
+#
+# Attestation: `sha256_self` is the SHA-256 of the canonical JSON of
+# every other field in this file (keys sorted). After editing any value,
+# regenerate it with:
+#
+#   python -c "from src.bayesian_inference import _load_calibration, _canonical_hash; \
+#              c=_load_calibration(); print(_canonical_hash({**c,'sha256_self':None}))"
+#
+# A mismatch is logged as a warning at import time (possible tampering)
+# but does not abort; the loaded values are still used.
+
+version: p5.3-2
+
+# Prior over distro identity D (approximates Docker Hub population).
+distro_prior:
+  debian:     0.30
+  ubuntu:     0.20
+  rhel:       0.10
+  alpine:     0.20
+  arch:       0.02
+  gentoo:     0.01
+  nixos:      0.01
+  wolfi:      0.03
+  distroless: 0.07
+  unknown:    0.06
+
+# Prior probability that the low-trust (SBOM/metadata) channel was
+# adversarially rewritten.
+tamper_prior: 0.02
+
+# P(L | D): libc family conditional per distro.
+libc_cpt:
+  debian:     {glibc: 0.99, musl: 0.005, none: 0.005, unknown: 0.0}
+  ubuntu:     {glibc: 0.99, musl: 0.005, none: 0.005, unknown: 0.0}
+  rhel:       {glibc: 0.99, musl: 0.005, none: 0.005, unknown: 0.0}
+  alpine:     {glibc: 0.01, musl: 0.98,  none: 0.01,  unknown: 0.0}
+  wolfi:      {glibc: 0.97, musl: 0.02,  none: 0.01,  unknown: 0.0}
+  arch:       {glibc: 0.99, musl: 0.005, none: 0.005, unknown: 0.0}
+  gentoo:     {glibc: 0.95, musl: 0.04,  none: 0.01,  unknown: 0.0}
+  nixos:      {glibc: 0.99, musl: 0.005, none: 0.005, unknown: 0.0}
+  distroless: {glibc: 0.70, musl: 0.05,  none: 0.25,  unknown: 0.0}
+  unknown:    {glibc: 0.50, musl: 0.25,  none: 0.10,  unknown: 0.15}
+
+# Per-signal emission parameters.
+#   strength   : P(signal emits the truthful value | not tampered)
+#   resolution : "distro" (names a specific distro) | "family" (names a
+#                family only -> scored at family granularity)
+#   trust      : "high" (structural, truthful under tampering) |
+#                "low"  (spoofable, flattened when T=1)
+signals:
+  layer_match:  {strength: 0.95, resolution: distro, trust: high}
+  pkgdb:        {strength: 0.90, resolution: family, trust: high}
+  topology:     {strength: 0.80, resolution: family, trust: high}
+  loader:       {strength: 0.88, resolution: distro, trust: high}
+  purl:         {strength: 0.85, resolution: family, trust: low}
+  compname:     {strength: 0.70, resolution: distro, trust: low}
+  trivy_result: {strength: 0.80, resolution: distro, trust: low}
+  os_release:   {strength: 0.75, resolution: distro, trust: low}
+  config:       {strength: 0.55, resolution: family, trust: low}
+
+emission:
+  within_family_error_share: 0.5
+  tamper_signal_retention:   0.15
+  loader_libc_strength:      0.95
+
+thresholds:
+  high_confidence_distro:     0.70
+  high_confidence_max_tamper: 0.30
+  likely_tampered:            0.50
+
+sha256_self: d8a2eaa4c967a6ecf7a00c09de2852c174b4659c4bbee97e5fec801dece95ab2

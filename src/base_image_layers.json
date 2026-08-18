@@ -1,0 +1,20 @@
+{
+  "_comment": "REAL RootFS layer diff_ids of known base images.",
+  "_schema_version": "1.1",
+  "_last_refreshed": "2026-07-05",
+  "sha256:b157b8c04250865143844ae3c4f435fa57d9567a5c2a02e5660a26c8928bae9e": {
+    "ref": "debian:12",
+    "distro": "debian",
+    "version": "12"
+  },
+  "sha256:0b44b2151d78267ab6f2c76208c3be18688f49b2b0afd6852a9533f2cce121c5": {
+    "ref": "alpine:3.19",
+    "distro": "alpine",
+    "version": "3.19"
+  },
+  "sha256:44343de3ea1d3f71f143967c71a91df76138a17a21ac56642f3c0f2a64b07dce": {
+    "ref": "rockylinux:9",
+    "distro": "rhel",
+    "version": "9"
+  }
+}

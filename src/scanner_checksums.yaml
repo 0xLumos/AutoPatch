@@ -1,0 +1,30 @@
+# Pinned SHA256 checksums for scanner binaries that AutoPatch /
+# LimenSec knows how to verify. Hashes were computed directly from
+# the upstream GitHub release artifacts at the URLs listed in each
+# comment.
+#
+# Adding a new version is a deliberate trust step:
+#   1. Download the official release tarball from
+#      https://github.com/aquasecurity/trivy/releases (or anchore/grype,
+#      sigstore/cosign).
+#   2. Verify the cosign signature on the release tarball (cosign
+#      verify-blob with the per-release cert identity).
+#   3. Compute SHA256:  shasum -a 256 <file>
+#   4. Paste the hash here keyed by version.
+#
+# Operators can extend with --scanner-checksums pointing at a YAML
+# file with the same shape; those entries override the bundled set.
+#
+# Last verified: 2026-05-15
+
+trivy:
+  # https://github.com/aquasecurity/trivy/releases/download/v0.69.3/trivy_0.69.3_Linux-64bit.tar.gz
+  "0.69.3": "1816b632dfe529869c740c0913e36bd1629cb7688bd5634f4a858c1d57c88b75"
+
+grype:
+  # https://github.com/anchore/grype/releases/download/v0.85.0/grype_0.85.0_linux_amd64.tar.gz
+  "0.85.0": "89f8ccbaa7a47abab90e9e894a925a92ef47a4d2bf0981001e654527378d6ed4"
+
+cosign:
+  # https://github.com/sigstore/cosign/releases/download/v2.4.1/cosign-linux-amd64
+  "2.4.1": "8b24b946dd5809c6bd93de08033bcf6bc0ed7d336b7785787c080f574b89249b"
