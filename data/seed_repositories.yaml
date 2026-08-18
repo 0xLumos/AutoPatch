@@ -1,0 +1,157 @@
+# Source repositories for allow-list generation, with the
+# compatibility profile any replacement must preserve.
+#
+# This file is the input to tools/refresh_allowlist.py. Adding a
+# repository here widens the search space; it does not itself grant
+# any mapping, because every proposal is verified against the live
+# registry before it reaches the generated allow-list.
+
+schema_version: "1.0"
+
+repositories:
+
+  # ── Language runtimes: glibc (Debian-derived) ──────────────────
+  python:
+    distro_family: debian
+    libc: glibc
+    runtime: python
+    runtime_major: "3"
+
+  node:
+    distro_family: debian
+    libc: glibc
+    runtime: node
+    runtime_major: "22"
+
+  golang:
+    distro_family: debian
+    libc: glibc
+    runtime: golang
+    runtime_major: "1"
+
+  ruby:
+    distro_family: debian
+    libc: glibc
+    runtime: ruby
+    runtime_major: "3"
+
+  php:
+    distro_family: debian
+    libc: glibc
+    runtime: php
+    runtime_major: "8"
+
+  openjdk:
+    distro_family: debian
+    libc: glibc
+    runtime: java
+    runtime_major: "21"
+
+  eclipse-temurin:
+    distro_family: debian
+    libc: glibc
+    runtime: java
+    runtime_major: "21"
+
+  rust:
+    distro_family: debian
+    libc: glibc
+    runtime: rust
+    runtime_major: "1"
+
+  perl:
+    distro_family: debian
+    libc: glibc
+    runtime: perl
+    runtime_major: "5"
+
+  # ── Distribution bases: glibc ──────────────────────────────────
+  debian:
+    distro_family: debian
+    libc: glibc
+
+  ubuntu:
+    distro_family: ubuntu
+    libc: glibc
+
+  rockylinux:
+    distro_family: rhel
+    libc: glibc
+
+  almalinux:
+    distro_family: rhel
+    libc: glibc
+
+  redhat/ubi9:
+    distro_family: rhel
+    libc: glibc
+
+  redhat/ubi8:
+    distro_family: rhel
+    libc: glibc
+
+  # ── Distribution bases: musl ───────────────────────────────────
+  alpine:
+    distro_family: alpine
+    libc: musl
+
+  # ── Servers and infrastructure ─────────────────────────────────
+  nginx:
+    distro_family: debian
+    libc: glibc
+
+  httpd:
+    distro_family: debian
+    libc: glibc
+
+  postgres:
+    distro_family: debian
+    libc: glibc
+
+  mysql:
+    distro_family: debian
+    libc: glibc
+
+  mariadb:
+    distro_family: debian
+    libc: glibc
+
+  redis:
+    distro_family: debian
+    libc: glibc
+
+  mongo:
+    distro_family: ubuntu
+    libc: glibc
+
+  memcached:
+    distro_family: debian
+    libc: glibc
+
+  rabbitmq:
+    distro_family: debian
+    libc: glibc
+
+  traefik:
+    distro_family: alpine
+    libc: musl
+
+  caddy:
+    distro_family: alpine
+    libc: musl
+
+  consul:
+    distro_family: alpine
+    libc: musl
+
+  vault:
+    distro_family: alpine
+    libc: musl
+
+  grafana:
+    distro_family: alpine
+    libc: musl
+
+  prom/prometheus:
+    distro_family: alpine
+    libc: musl

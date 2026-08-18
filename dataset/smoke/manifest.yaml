@@ -1,0 +1,183 @@
+# Runtime-validation manifest for the AutoPatch evaluation corpus.
+#
+# Every accepted image is validated with the tiered predicate defined
+# in src/runtime_validator.py:
+#
+#   Tier 1 (startup)        always applied; container must remain
+#                           running for startup_hold_s seconds
+#   Tier 2 (introspection)  entrypoint invoked with --version/--help;
+#                           a dynamic-loader or ABI failure is a hard
+#                           fail, an entrypoint that simply rejects the
+#                           flag is recorded as SKIP
+#   Tier 3 (application)    operator-supplied probe; only images with
+#                           an app_command below contribute to the
+#                           Tier-3 denominator
+#
+# Images absent from this file still receive Tier 1 and Tier 2 with
+# the defaults below.
+
+version: 1
+
+defaults:
+  startup_hold_s: 10
+  startup_timeout_s: 30
+  introspect: true
+  introspect_timeout_s: 15
+  app_timeout_s: 30
+  network: none
+  read_only_rootfs: true
+
+images:
+
+  # ── Web servers / reverse proxies ────────────────────────────────
+  nginx:
+    network: bridge
+    published_port: 80
+    read_only_rootfs: false      # nginx writes pid + cache
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:80/ >/dev/null"]
+
+  httpd:
+    network: bridge
+    published_port: 80
+    read_only_rootfs: false
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:80/ >/dev/null"]
+
+  traefik:
+    network: bridge
+    published_port: 8080
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:8080/ping >/dev/null"]
+
+  caddy:
+    network: bridge
+    published_port: 80
+    read_only_rootfs: false
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:80/ >/dev/null"]
+
+  # ── Datastores ───────────────────────────────────────────────────
+  postgres:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 20
+    env:
+      POSTGRES_PASSWORD: autopatch_validation
+    app_command: ["pg_isready", "-U", "postgres"]
+
+  mysql:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 25
+    env:
+      MYSQL_ROOT_PASSWORD: autopatch_validation
+    app_command: ["mysqladmin", "ping", "-h", "127.0.0.1"]
+
+  mariadb:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 25
+    env:
+      MARIADB_ROOT_PASSWORD: autopatch_validation
+    app_command: ["mariadb-admin", "ping", "-h", "127.0.0.1"]
+
+  redis:
+    network: bridge
+    app_command: ["redis-cli", "ping"]
+
+  mongo:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 20
+    app_command: ["sh", "-c", "mongosh --quiet --eval 'db.runCommand({ping:1})' || mongo --quiet --eval 'db.runCommand({ping:1})'"]
+
+  memcached:
+    network: bridge
+    app_command: ["sh", "-c", "echo stats | nc -w2 127.0.0.1 11211 | head -1"]
+
+  # ── Message brokers ──────────────────────────────────────────────
+  rabbitmq:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 30
+    app_command: ["rabbitmq-diagnostics", "-q", "ping"]
+
+  # ── Language runtimes (introspection-only; no service to probe) ──
+  python:
+    app_command: ["python3", "-c", "import sys, ssl, hashlib; print(sys.version)"]
+
+  node:
+    app_command: ["node", "-e", "require('crypto').randomBytes(8); console.log(process.version)"]
+
+  golang:
+    app_command: ["go", "version"]
+
+  openjdk:
+    app_command: ["java", "-version"]
+
+  eclipse-temurin:
+    app_command: ["java", "-version"]
+
+  ruby:
+    app_command: ["ruby", "-e", "require 'openssl'; puts RUBY_VERSION"]
+
+  php:
+    app_command: ["php", "-r", "echo PHP_VERSION;"]
+
+  perl:
+    app_command: ["perl", "-e", "print $];"]
+
+  rust:
+    app_command: ["rustc", "--version"]
+
+  # ── Distro bases (no application; Tier 1 + 2 only) ───────────────
+  debian:
+    introspect: false            # bash entrypoint has no --version path
+    app_command: ["sh", "-c", "cat /etc/os-release >/dev/null && ls /bin >/dev/null"]
+
+  ubuntu:
+    introspect: false
+    app_command: ["sh", "-c", "cat /etc/os-release >/dev/null && ls /bin >/dev/null"]
+
+  alpine:
+    introspect: false
+    app_command: ["sh", "-c", "cat /etc/os-release >/dev/null && ls /bin >/dev/null"]
+
+  rockylinux:
+    introspect: false
+    app_command: ["sh", "-c", "cat /etc/os-release >/dev/null && ls /bin >/dev/null"]
+
+  almalinux:
+    introspect: false
+    app_command: ["sh", "-c", "cat /etc/os-release >/dev/null && ls /bin >/dev/null"]
+
+  # ── Applications with health endpoints ───────────────────────────
+  vault:
+    network: bridge
+    published_port: 8200
+    env:
+      SKIP_SETCAP: "true"
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:8200/v1/sys/health >/dev/null || true"]
+
+  consul:
+    network: bridge
+    published_port: 8500
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:8500/v1/status/leader >/dev/null"]
+
+  grafana:
+    network: bridge
+    published_port: 3000
+    read_only_rootfs: false
+    startup_hold_s: 20
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:3000/api/health >/dev/null"]
+
+  prom/prometheus:
+    network: bridge
+    published_port: 9090
+    app_command: ["sh", "-c", "wget -qO- -T5 http://127.0.0.1:9090/-/healthy >/dev/null"]
+
+  elasticsearch:
+    network: bridge
+    read_only_rootfs: false
+    startup_hold_s: 40
+    env:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms256m -Xmx256m"
+    app_command: ["sh", "-c", "curl -fsS -m5 http://127.0.0.1:9200/_cluster/health >/dev/null"]
