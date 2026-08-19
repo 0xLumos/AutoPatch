@@ -1,3 +1,0 @@
-FROM rockylinux:8-minimal
-WORKDIR /app
-RUN microdnf install -y curl
