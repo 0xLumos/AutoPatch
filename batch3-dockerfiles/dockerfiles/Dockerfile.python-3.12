@@ -1,4 +1,0 @@
-FROM python:3.12
-WORKDIR /app
-RUN pip install requests==2.31.0
-CMD ["python", "-c", "print(1)"]

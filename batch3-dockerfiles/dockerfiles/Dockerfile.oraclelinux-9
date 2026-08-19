@@ -1,3 +1,0 @@
-FROM oraclelinux:9
-WORKDIR /app
-RUN dnf install -y curl && dnf clean all

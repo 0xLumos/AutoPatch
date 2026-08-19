@@ -1,4 +1,0 @@
-FROM python:3.9-slim
-WORKDIR /app
-RUN pip install requests==2.28.0
-CMD ["python", "-c", "print(1)"]

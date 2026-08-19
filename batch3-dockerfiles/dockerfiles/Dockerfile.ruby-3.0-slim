@@ -1,3 +1,0 @@
-FROM ruby:3.0-slim
-WORKDIR /app
-CMD ["ruby", "-v"]

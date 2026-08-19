@@ -1,3 +1,0 @@
-FROM mongo:6.0
-WORKDIR /app
-EXPOSE 27017

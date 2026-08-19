@@ -1,3 +1,0 @@
-FROM redis:7
-WORKDIR /app
-EXPOSE 6379
