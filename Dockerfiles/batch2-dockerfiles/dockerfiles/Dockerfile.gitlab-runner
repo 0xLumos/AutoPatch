@@ -1,3 +1,0 @@
-FROM gitlab/gitlab-runner:v15.0.0
-WORKDIR /app
-CMD ["gitlab-runner", "--version"]

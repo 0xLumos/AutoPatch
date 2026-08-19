@@ -1,3 +1,0 @@
-FROM bitnami/kafka:3.3
-WORKDIR /app
-EXPOSE 9092

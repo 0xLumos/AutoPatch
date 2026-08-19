@@ -1,3 +1,0 @@
-FROM amazonlinux:2
-WORKDIR /app
-RUN yum install -y curl && yum clean all
