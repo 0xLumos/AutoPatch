@@ -200,8 +200,8 @@ experiments/         corpus collection, screening, batch runner, baselines,
 tools/               allowlist refresh, rollback helper
 data/                corpus seed list
 screened_2yr/        pinned corpus manifest + screening state
+corpus/              the 39 evaluated Dockerfiles, one per image, with source pins
 results/             per-batch results, summaries, sweeps, final figures
-dockerfiles/         sample Dockerfiles used by the test suite
 figures/             the paper's architecture diagram and its generator
 ```
 
