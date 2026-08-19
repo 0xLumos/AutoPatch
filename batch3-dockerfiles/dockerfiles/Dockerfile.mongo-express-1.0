@@ -1,0 +1,18 @@
+FROM mongo-express:1.0.2-20-alpine3.19
+LABEL maintainer="devops@example.com" \
+      description="Mongo Express 1.0 database admin UI"
+
+EXPOSE 8081
+
+ENV ME_CONFIG_MONGODB_URL=mongodb://mongo:27017 \
+    ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+    ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+    ME_CONFIG_SITE_TITLE="Mongo Express" \
+    ME_CONFIG_SITE_BASEURL=/
+
+RUN apk add --no-cache curl
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8081 || exit 1
+
+CMD ["mongo_express"]

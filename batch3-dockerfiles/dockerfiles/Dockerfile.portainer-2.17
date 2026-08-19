@@ -1,0 +1,20 @@
+FROM portainer/portainer-ce:2.17.0
+LABEL maintainer="devops@example.com" \
+      description="Portainer 2.17 container management"
+
+EXPOSE 9000 9443
+
+ENV AGENT_CLUSTER_ADDR=portainer-agent:9001 \
+    EDGE_ID="" \
+    EDGE_INSECURE_POLL=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+VOLUME ["/data", "/var/run/docker.sock"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f https://localhost:9443 -k || exit 1
+
+CMD ["/portainer"]

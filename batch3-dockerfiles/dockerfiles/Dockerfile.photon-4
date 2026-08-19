@@ -1,0 +1,3 @@
+FROM photon:4.0
+WORKDIR /app
+RUN tdnf install -y curl && tdnf clean all

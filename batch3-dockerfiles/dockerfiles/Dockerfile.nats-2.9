@@ -1,0 +1,22 @@
+FROM nats:2.9
+LABEL maintainer="devops@example.com" \
+      description="NATS 2.9 message broker"
+
+EXPOSE 4222 8222 6222
+
+ENV NATS_PORT=4222 \
+    NATS_MONITORING_PORT=8222
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY nats-server.conf /etc/nats/nats-server.conf || true
+RUN echo "# NATS configuration placeholder" >> /etc/nats/nats-server.conf
+
+VOLUME ["/var/lib/nats"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8222/varz || exit 1
+
+CMD ["nats-server", "-c", "/etc/nats/nats-server.conf"]

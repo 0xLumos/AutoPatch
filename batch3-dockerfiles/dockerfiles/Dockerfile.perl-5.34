@@ -1,0 +1,23 @@
+FROM perl:5.34
+LABEL maintainer="devops@example.com" \
+      description="Perl 5.34 development environment"
+
+WORKDIR /app
+
+ENV PERL_CPAN_IS_RUNNING=1 \
+    PERL_MM_USE_DEFAULT=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    libxml2-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cpan App::cpanminus || true
+
+COPY cpanfile /app/cpanfile || true
+RUN echo "# Perl dependencies placeholder" > /app/cpanfile
+
+VOLUME ["/app"]
+
+CMD ["perl", "app.pl"]

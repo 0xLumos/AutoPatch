@@ -1,0 +1,12 @@
+FROM openjdk:11-jdk
+
+LABEL maintainer="test@example.com" \
+      description="OpenJDK 11 with simple Java app"
+
+WORKDIR /app
+
+COPY build/libs/app.jar .
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]

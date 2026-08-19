@@ -1,0 +1,4 @@
+FROM node:16-slim
+WORKDIR /app
+RUN npm init -y
+CMD ["node", "-e", "console.log(1)"]

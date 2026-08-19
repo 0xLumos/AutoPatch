@@ -1,0 +1,16 @@
+FROM node:14-buster
+
+LABEL maintainer="test@example.com" \
+      description="Node.js 14 with Express"
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install --production
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]

@@ -1,0 +1,4 @@
+FROM python:3.10
+WORKDIR /app
+RUN pip install flask==2.3.0
+CMD ["python", "-c", "print(1)"]
