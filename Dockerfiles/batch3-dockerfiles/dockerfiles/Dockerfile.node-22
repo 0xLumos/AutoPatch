@@ -1,3 +1,0 @@
-FROM node:22
-WORKDIR /app
-CMD ["node", "-e", "console.log(1)"]

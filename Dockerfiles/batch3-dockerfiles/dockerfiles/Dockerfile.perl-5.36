@@ -1,3 +1,0 @@
-FROM perl:5.36
-WORKDIR /app
-CMD ["perl", "-v"]

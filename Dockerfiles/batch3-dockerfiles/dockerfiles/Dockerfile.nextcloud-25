@@ -1,3 +1,0 @@
-FROM nextcloud:25
-WORKDIR /app
-EXPOSE 80
