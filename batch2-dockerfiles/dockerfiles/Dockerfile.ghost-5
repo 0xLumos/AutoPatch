@@ -1,3 +1,0 @@
-FROM ghost:5
-WORKDIR /app
-EXPOSE 2368

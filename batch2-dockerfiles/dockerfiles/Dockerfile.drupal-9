@@ -1,3 +1,0 @@
-FROM drupal:9
-WORKDIR /app
-EXPOSE 80

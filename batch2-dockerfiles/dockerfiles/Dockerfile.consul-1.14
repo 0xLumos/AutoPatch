@@ -1,3 +1,0 @@
-FROM hashicorp/consul:1.14
-WORKDIR /app
-EXPOSE 8500
