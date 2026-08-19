@@ -1,3 +1,0 @@
-FROM sonarqube:9.9-community
-WORKDIR /app
-EXPOSE 9000

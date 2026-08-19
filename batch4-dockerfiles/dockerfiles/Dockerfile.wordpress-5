@@ -1,3 +1,0 @@
-FROM wordpress:5
-WORKDIR /app
-EXPOSE 80
