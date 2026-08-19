@@ -1,0 +1,23 @@
+FROM zookeeper:3.7
+LABEL maintainer="devops@example.com" \
+      description="ZooKeeper 3.7 distributed coordination"
+
+EXPOSE 2181 2888 3888
+
+ENV ZOO_CFG_DYNAMIC_PREFIX=server \
+    ZOO_CFG=zoo.cfg \
+    ZOO_DATA_DIR=/var/lib/zookeeper/data \
+    ZOO_SYNC_LIMIT=5 \
+    ZOO_INIT_LIMIT=10 \
+    ZOO_TICK_TIME=2000
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+VOLUME ["/var/lib/zookeeper/data", "/var/lib/zookeeper/logs"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD echo ruok | nc localhost 2181 | grep imok || exit 1
+
+CMD ["/docker-entrypoint.sh", "zkServer.sh", "start-foreground"]
