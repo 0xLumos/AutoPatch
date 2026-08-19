@@ -1,3 +1,0 @@
-FROM hashicorp/vault:1.14.0
-WORKDIR /app
-CMD ["vault", "version"]
