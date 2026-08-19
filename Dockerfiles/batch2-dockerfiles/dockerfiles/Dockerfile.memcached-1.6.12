@@ -1,0 +1,18 @@
+FROM memcached:1.6.12
+LABEL maintainer="devops@example.com" \
+      description="Memcached 1.6.12 in-memory cache"
+
+EXPOSE 11211
+
+ENV MEMCACHED_MEMORY=512 \
+    MEMCACHED_THREADS=4 \
+    MEMCACHED_CONNECTIONS=1024
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD echo stats | nc localhost 11211 | grep pid || exit 1
+
+CMD ["memcached", "-m", "512", "-t", "4", "-c", "1024"]

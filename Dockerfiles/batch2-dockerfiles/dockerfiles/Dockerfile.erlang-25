@@ -1,0 +1,3 @@
+FROM erlang:25
+WORKDIR /app
+CMD ["erl", "-version"]

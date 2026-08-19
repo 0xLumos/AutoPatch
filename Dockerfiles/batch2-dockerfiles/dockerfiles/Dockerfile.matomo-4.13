@@ -1,0 +1,22 @@
+FROM matomo:4.13-apache
+LABEL maintainer="devops@example.com" \
+      description="Matomo 4.13 web analytics"
+
+EXPOSE 80
+
+ENV MATOMO_DOMAIN=localhost \
+    MATOMO_ADMIN_USER=admin \
+    MATOMO_ADMIN_PASSWORD=admin
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY config.ini.php /var/www/html/config/config.ini.php || true
+
+VOLUME ["/var/www/html"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
+CMD ["apache2-foreground"]

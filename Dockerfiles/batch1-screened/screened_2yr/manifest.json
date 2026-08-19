@@ -1,0 +1,740 @@
+{
+  "criteria_version": "2.1-screened",
+  "screened": "2026-08-12T19:12:53Z",
+  "screen_rule": "original builds once AND selector proposes a real base change; legacy stratum only; drops logged in attrition.json; survivor cap 45",
+  "entries": [
+    {
+      "name": "headscale@v0.22.3",
+      "project": "headscale",
+      "stratum": "legacy",
+      "repo": "https://github.com/juanfont/headscale",
+      "ref": "v0.22.3",
+      "ref_sha": "b01f1f1867136d9b2d7b1392776eb363b482c525",
+      "ref_date": "2023-05-12T10:09:36+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/headscale@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/headscale@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "docker.io/golang:1.20-bullseye",
+        "docker.io/debian:bullseye-slim"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "restic@v0.17.0",
+      "project": "restic",
+      "stratum": "legacy",
+      "repo": "https://github.com/restic/restic",
+      "ref": "v0.17.0",
+      "ref_sha": "7577c6d1bb11082fbdb311303fd802ab3428cde8",
+      "ref_date": "2024-07-26T11:30:37+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/restic@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/restic@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "lazygit@v0.43.1",
+      "project": "lazygit",
+      "stratum": "legacy",
+      "repo": "https://github.com/jesseduffield/lazygit",
+      "ref": "v0.43.1",
+      "ref_sha": "71ad3fac63a3ef3326021837b49e9497d332818b",
+      "ref_date": "2024-07-13T12:14:39+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/lazygit@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/lazygit@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22",
+        "alpine:3.19"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "croc@v10.0.11",
+      "project": "croc",
+      "stratum": "legacy",
+      "repo": "https://github.com/schollz/croc",
+      "ref": "v10.0.11",
+      "ref_sha": "4d11759c21f1e013ec4b80f53b1a44ae42e38729",
+      "ref_date": "2024-07-30T10:07:37-07:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/croc@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/croc@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "kubo@v0.29.0",
+      "project": "kubo",
+      "stratum": "legacy",
+      "repo": "https://github.com/ipfs/kubo",
+      "ref": "v0.29.0",
+      "ref_sha": "8215874649be892adb61d941b4d95525dffb28cd",
+      "ref_date": "2024-06-10T14:35:17+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/kubo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/kubo@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 3,
+      "base_images": [
+        "--platform=${BUILDPLATFORM:-linux/amd64}",
+        "debian:stable-slim",
+        "busybox:stable-glibc"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "snipe-it@v7.0.10",
+      "project": "snipe-it",
+      "stratum": "legacy",
+      "repo": "https://github.com/snipe/snipe-it",
+      "ref": "v7.0.10",
+      "ref_sha": "39727820330d4abe434b1491ffe55fc1a6308146",
+      "ref_date": "2024-07-29T18:27:56+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/snipe-it@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/snipe-it@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "ubuntu:22.04"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "healthchecks@v3.4",
+      "project": "healthchecks",
+      "stratum": "legacy",
+      "repo": "https://github.com/healthchecks/healthchecks",
+      "ref": "v3.4",
+      "ref_sha": "17d01ee6e25d73932c22500518cdad6169baa730",
+      "ref_date": "2024-06-20T15:15:29+03:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/healthchecks@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/healthchecks@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "python:3.12-slim-bookworm",
+        "python:3.12-slim-bookworm"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "mealie@v1.11.0",
+      "project": "mealie",
+      "stratum": "legacy",
+      "repo": "https://github.com/mealie-recipes/mealie",
+      "ref": "v1.11.0",
+      "ref_sha": "a41ad8c6ed968b43e5674ce77785dbdf76f77f57",
+      "ref_date": "2024-07-30T19:26:12-05:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/mealie@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/mealie@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 5,
+      "base_images": [
+        "node:16",
+        "python:3.10-slim",
+        "python-base",
+        "hkotel/crfpp",
+        "python-base"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "registry@v2.7.0",
+      "project": "registry",
+      "stratum": "legacy",
+      "repo": "https://github.com/distribution/distribution",
+      "ref": "v2.7.0",
+      "ref_sha": "1d730e7bbb4eb24c2f22626e3ce8ad7a334d4fb1",
+      "ref_date": "2018-12-03T16:16:08-08:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/registry@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/registry@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.11-alpine",
+        "alpine"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "hugo@v0.122.0",
+      "project": "hugo",
+      "stratum": "legacy",
+      "repo": "https://github.com/gohugoio/hugo",
+      "ref": "v0.122.0",
+      "ref_sha": "b9a03bd59d5f71a529acb3e33f995e0ef332b3aa",
+      "ref_date": "2024-01-26T15:54:24+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/hugo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/hugo@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.21-alpine",
+        "alpine:3.18"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "memos@v0.19.1",
+      "project": "memos",
+      "stratum": "legacy",
+      "repo": "https://github.com/usememos/memos",
+      "ref": "v0.19.1",
+      "ref_sha": "374f3f7d9684b8a692e9a82204fb6a9cc61b7984",
+      "ref_date": "2024-02-03T22:03:56+08:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/memos@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/memos@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 3,
+      "base_images": [
+        "node:20-alpine",
+        "golang:1.21-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "restic@v0.16.4",
+      "project": "restic",
+      "stratum": "legacy",
+      "repo": "https://github.com/restic/restic",
+      "ref": "v0.16.4",
+      "ref_sha": "9a9cc6dd0d978a8a452ff181558d5856dc217a37",
+      "ref_date": "2024-02-04T19:50:52+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/restic@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/restic@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.20-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "lazygit@v0.40.2",
+      "project": "lazygit",
+      "stratum": "legacy",
+      "repo": "https://github.com/jesseduffield/lazygit",
+      "ref": "v0.40.2",
+      "ref_sha": "5e388e21c8ca6aa883dbcbe45c47f6fdd5116815",
+      "ref_date": "2023-08-07T14:03:45+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/lazygit@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/lazygit@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.20",
+        "alpine:3.15"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "croc@v9.6.9",
+      "project": "croc",
+      "stratum": "legacy",
+      "repo": "https://github.com/schollz/croc",
+      "ref": "v9.6.9",
+      "ref_sha": "d5e0c8340ba15ab742869cf67e5757d13f7ff661",
+      "ref_date": "2024-02-08T13:39:45-07:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/croc@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/croc@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "kubo@v0.26.0",
+      "project": "kubo",
+      "stratum": "legacy",
+      "repo": "https://github.com/ipfs/kubo",
+      "ref": "v0.26.0",
+      "ref_sha": "1b7d9de13d2e5199dba60a1b85d688b2ce44b736",
+      "ref_date": "2024-01-22T14:44:26+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/kubo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/kubo@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 3,
+      "base_images": [
+        "--platform=${BUILDPLATFORM:-linux/amd64}",
+        "debian:stable-slim",
+        "busybox:stable-glibc"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "changedetection@0.45.14",
+      "project": "changedetection",
+      "stratum": "legacy",
+      "repo": "https://github.com/dgtlmoon/changedetection.io",
+      "ref": "0.45.14",
+      "ref_sha": "5119efe4fb3ffa670c8e5b61fd9ebe3f58483a97",
+      "ref_date": "2024-02-07T12:43:23+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/changedetection@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/changedetection@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "python:3.11-slim-bookworm",
+        "python:3.11-slim-bookworm"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "snipe-it@v6.3.0",
+      "project": "snipe-it",
+      "stratum": "legacy",
+      "repo": "https://github.com/snipe/snipe-it",
+      "ref": "v6.3.0",
+      "ref_sha": "86c625ed8f5956c8ee75b54578965083742548f1",
+      "ref_date": "2024-01-27T15:12:03+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/snipe-it@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/snipe-it@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "ubuntu:22.04"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "healthchecks@v3.2",
+      "project": "healthchecks",
+      "stratum": "legacy",
+      "repo": "https://github.com/healthchecks/healthchecks",
+      "ref": "v3.2",
+      "ref_sha": "c99b644a228ec664297c172562ec4efc7f25e4ba",
+      "ref_date": "2024-02-09T14:09:45+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/healthchecks@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/healthchecks@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "python:3.12-slim-bookworm",
+        "python:3.12-slim-bookworm"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "mealie@v1.2.0",
+      "project": "mealie",
+      "stratum": "legacy",
+      "repo": "https://github.com/mealie-recipes/mealie",
+      "ref": "v1.2.0",
+      "ref_sha": "42a33cd993b4638f181d4083a7c5d21bf110e4e4",
+      "ref_date": "2024-02-10T03:49:26+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/mealie@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/mealie@legacy",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 5,
+      "base_images": [
+        "node:16",
+        "python:3.10-slim",
+        "python-base",
+        "hkotel/crfpp",
+        "python-base"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "etherpad@v1.9.7",
+      "project": "etherpad",
+      "stratum": "legacy",
+      "repo": "https://github.com/ether/etherpad-lite",
+      "ref": "v1.9.7",
+      "ref_sha": "f229a482306b43ccb19111fc93f503b71b5f7b81",
+      "ref_date": "2024-02-05T20:17:02+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/etherpad@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/etherpad@legacy",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "node:lts-alpine"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "etcd@v2.3.0",
+      "project": "etcd",
+      "stratum": "legacy",
+      "repo": "https://github.com/etcd-io/etcd",
+      "ref": "v2.3.0",
+      "ref_sha": "e9ef69008b3390a96698b580c3d0db99509d8ecc",
+      "ref_date": "2016-03-18T09:54:47-07:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/etcd@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/etcd@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "golang:onbuild"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "victoriametrics@v1.102.1",
+      "project": "victoriametrics",
+      "stratum": "legacy",
+      "repo": "https://github.com/VictoriaMetrics/VictoriaMetrics",
+      "ref": "v1.102.1",
+      "ref_sha": "996b623585d1945a298d95d9e2ea4f055e2dcd2a",
+      "ref_date": "2024-08-01T14:45:09+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/victoriametrics@legacy/cspell/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/victoriametrics@legacy/cspell",
+      "context_basis": "copy-evidence:dockerfile-dir(2v0)",
+      "dockerfile_rel": "cspell/Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "node:lts-alpine3.20"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "sftpgo@v2.6.0",
+      "project": "sftpgo",
+      "stratum": "legacy",
+      "repo": "https://github.com/drakkan/sftpgo",
+      "ref": "v2.6.0",
+      "ref_sha": "19e9857feae10dd74cd3f3a8af2723a50aba64bd",
+      "ref_date": "2024-05-15T17:36:10+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/sftpgo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/sftpgo@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-bookworm",
+        "debian:bookworm-slim"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "tandoor-recipes@1.5.18",
+      "project": "tandoor-recipes",
+      "stratum": "legacy",
+      "repo": "https://github.com/TandoorRecipes/recipes",
+      "ref": "1.5.18",
+      "ref_sha": "af9a95651dc65af5d19aa26d3d7a5b1765a9ca99",
+      "ref_date": "2024-07-08T18:13:49+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/tandoor-recipes@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/tandoor-recipes@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "python:3.12-alpine3.19"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "superset@v2021.41.0",
+      "project": "superset",
+      "stratum": "legacy",
+      "repo": "https://github.com/apache/superset",
+      "ref": "v2021.41.0",
+      "ref_sha": "828209dfae96a9628b012e4debe8d05f8b50306e",
+      "ref_date": "2021-10-06T21:59:32+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/superset@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/superset@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 5,
+      "base_images": [
+        "python:${PY_VER}",
+        "node:16",
+        "python:${PY_VER}",
+        "lean",
+        "lean"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "wger@2.2",
+      "project": "wger",
+      "stratum": "legacy",
+      "repo": "https://github.com/wger-project/wger",
+      "ref": "2.2",
+      "ref_sha": "913969c6106828dc727ee8c94afaeb6bbe90798e",
+      "ref_date": "2023-12-06T12:25:22+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_2yr/wger@legacy/extras/docker/base/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_2yr/wger@legacy",
+      "context_basis": "no-evidence-default-root",
+      "dockerfile_rel": "extras/docker/base/Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "ubuntu:22.04"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "sftpgo@v2.5.1",
+      "project": "sftpgo",
+      "stratum": "legacy",
+      "repo": "https://github.com/drakkan/sftpgo",
+      "ref": "v2.5.1",
+      "ref_sha": "5b4a1bda2e1b8635390541462b75748c84009668",
+      "ref_date": "2023-05-20T17:39:23+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/sftpgo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/sftpgo@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.20-bullseye",
+        "debian:bullseye-slim"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "tandoor-recipes@1.5.12",
+      "project": "tandoor-recipes",
+      "stratum": "legacy",
+      "repo": "https://github.com/TandoorRecipes/recipes",
+      "ref": "1.5.12",
+      "ref_sha": "2a15d19551c94c04b520090342cc42dd7c71d290",
+      "ref_date": "2024-02-02T07:45:24+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_30mo/tandoor-recipes@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_30mo/tandoor-recipes@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "python:3.10-alpine3.18"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "navidrome@v0.54.4",
+      "project": "navidrome",
+      "stratum": "legacy",
+      "repo": "https://github.com/navidrome/navidrome",
+      "ref": "v0.54.4",
+      "ref_sha": "73ccfbd8399024bffba65cf2dfbb558a3eb6e16f",
+      "ref_date": "2025-01-13T18:07:45-05:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/navidrome@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/navidrome@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 10,
+      "base_images": [
+        "--platform=$BUILDPLATFORM",
+        "--platform=$BUILDPLATFORM",
+        "scratch",
+        "--platform=$BUILDPLATFORM",
+        "--platform=$BUILDPLATFORM",
+        "scratch",
+        "--platform=$BUILDPLATFORM",
+        "--platform=$BUILDPLATFORM",
+        "scratch",
+        "public.ecr.aws/docker/library/alpine:3.21"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "restic@v0.17.3",
+      "project": "restic",
+      "stratum": "legacy",
+      "repo": "https://github.com/restic/restic",
+      "ref": "v0.17.3",
+      "ref_sha": "39a6124be558622b0473175af5f8062f3bdca488",
+      "ref_date": "2024-11-08T20:36:36+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/restic@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/restic@legacy",
+      "context_basis": "copy-evidence:root(2v0)",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "lazygit@v0.45.2",
+      "project": "lazygit",
+      "stratum": "legacy",
+      "repo": "https://github.com/jesseduffield/lazygit",
+      "ref": "v0.45.2",
+      "ref_sha": "c03b89227092b852d50015d289a7c6d8c69811c5",
+      "ref_date": "2025-01-18T00:36:18+11:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/lazygit@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/lazygit@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22",
+        "alpine:3.19"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "croc@v10.2.1",
+      "project": "croc",
+      "stratum": "legacy",
+      "repo": "https://github.com/schollz/croc",
+      "ref": "v10.2.1",
+      "ref_sha": "ba1b5d89d5dc1f902f9c9e7a11eb89944a18cab8",
+      "ref_date": "2024-12-31T08:57:34-08:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/croc@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/croc@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "golang:1.22-alpine",
+        "alpine:latest"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "kubo@v0.33.1",
+      "project": "kubo",
+      "stratum": "legacy",
+      "repo": "https://github.com/ipfs/kubo",
+      "ref": "v0.33.1",
+      "ref_sha": "c5a42109c7f2bfd576e99f3059b423f3430a7bb2",
+      "ref_date": "2025-02-04T20:35:08+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/kubo@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/kubo@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 3,
+      "base_images": [
+        "--platform=${BUILDPLATFORM:-linux/amd64}",
+        "debian:stable-slim",
+        "busybox:stable-glibc"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "snipe-it@v7.1.16",
+      "project": "snipe-it",
+      "stratum": "legacy",
+      "repo": "https://github.com/snipe/snipe-it",
+      "ref": "v7.1.16",
+      "ref_sha": "bebc1f4d0da3daae7c069b550bae3722a902d787",
+      "ref_date": "2025-01-22T17:31:17+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/snipe-it@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/snipe-it@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "ubuntu:22.04"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "dolibarr@20.0.3",
+      "project": "dolibarr",
+      "stratum": "legacy",
+      "repo": "https://github.com/Dolibarr/dolibarr",
+      "ref": "20.0.3",
+      "ref_sha": "8548babf32176be46a3bffb4b74674a47b1316a7",
+      "ref_date": "2024-12-29T15:13:24+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/dolibarr@legacy/build/docker-dev/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/dolibarr@legacy/build/docker-dev",
+      "context_basis": "copy-evidence:dockerfile-dir(1v0)",
+      "dockerfile_rel": "build/docker-dev/Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "php:8.1-apache-bullseye"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "healthchecks@v3.9",
+      "project": "healthchecks",
+      "stratum": "legacy",
+      "repo": "https://github.com/healthchecks/healthchecks",
+      "ref": "v3.9",
+      "ref_sha": "2dd49942595b451780f5b86252bbc17b8c7590ef",
+      "ref_date": "2024-12-20T11:38:33+02:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/healthchecks@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/healthchecks@legacy",
+      "context_basis": "copy-evidence:root(2v0)",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 2,
+      "base_images": [
+        "python:3.13.1-slim-bookworm",
+        "python:3.13.0-slim-bookworm"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "mealie@v2.6.0",
+      "project": "mealie",
+      "stratum": "legacy",
+      "repo": "https://github.com/mealie-recipes/mealie",
+      "ref": "v2.6.0",
+      "ref_sha": "2d73c703cb8ee192467adb41bbfc1a714a22a819",
+      "ref_date": "2025-02-05T21:40:03+00:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/mealie@legacy/docker/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/mealie@legacy",
+      "context_basis": "copy-evidence:root(7v0)",
+      "dockerfile_rel": "docker/Dockerfile",
+      "from_count": 5,
+      "base_images": [
+        "node:16",
+        "python:3.12-slim",
+        "python-base",
+        "hkotel/crfpp",
+        "python-base"
+      ],
+      "multistage": true
+    },
+    {
+      "name": "victoriametrics@v1.111.0",
+      "project": "victoriametrics",
+      "stratum": "legacy",
+      "repo": "https://github.com/VictoriaMetrics/VictoriaMetrics",
+      "ref": "v1.111.0",
+      "ref_sha": "ee8f852a83e74cd5d18c7acaa60859345ff38b01",
+      "ref_date": "2025-02-07T19:42:11+04:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/victoriametrics@legacy/cspell/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/victoriametrics@legacy/cspell",
+      "context_basis": "copy-evidence:dockerfile-dir(2v0)",
+      "dockerfile_rel": "cspell/Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "node:lts-alpine3.20"
+      ],
+      "multistage": false
+    },
+    {
+      "name": "tandoor-recipes@1.5.31",
+      "project": "tandoor-recipes",
+      "stratum": "legacy",
+      "repo": "https://github.com/TandoorRecipes/recipes",
+      "ref": "1.5.31",
+      "ref_sha": "a0c8b39f0cacc030115ed14683d2a17e0e13f709",
+      "ref_date": "2025-02-01T08:08:55+01:00",
+      "dockerfile": "/home/test/AutoPatch/real_repos_18mo/tandoor-recipes@legacy/Dockerfile",
+      "context": "/home/test/AutoPatch/real_repos_18mo/tandoor-recipes@legacy",
+      "context_basis": "dockerfile-at-root",
+      "dockerfile_rel": "Dockerfile",
+      "from_count": 1,
+      "base_images": [
+        "python:3.12-alpine3.19"
+      ],
+      "multistage": false
+    }
+  ]
+}

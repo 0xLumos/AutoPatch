@@ -1,0 +1,24 @@
+FROM flink:1.16
+LABEL maintainer="devops@example.com" \
+      description="Flink 1.16 stream processing"
+
+EXPOSE 8081 6123 8082 8083 8084
+
+ENV FLINK_HOME=/opt/flink \
+    FLINK_CONF_DIR=/opt/flink/conf \
+    FLINK_JM_HEAP=1024m \
+    FLINK_TM_HEAP=1024m \
+    FLINK_TM_SLOTS=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY flink-conf.yaml /opt/flink/conf/flink-conf.yaml || true
+
+VOLUME ["/opt/flink/data", "/opt/flink/logs"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8081 || exit 1
+
+CMD ["jobmanager.sh", "start"]

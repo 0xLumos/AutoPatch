@@ -1,0 +1,18 @@
+FROM envoyproxy/envoy:v1.25.0
+LABEL maintainer="devops@example.com" \
+      description="Envoy 1.25 proxy and load balancer"
+
+EXPOSE 10000 9901
+
+ENV ENVOY_LOG_LEVEL=info
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY envoy.yaml /etc/envoy/envoy.yaml
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:9901/stats | grep uptime || exit 1
+
+CMD ["/usr/local/bin/envoy", "-c", "/etc/envoy/envoy.yaml", "-l", "info"]

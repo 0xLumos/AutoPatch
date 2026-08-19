@@ -1,0 +1,4 @@
+FROM docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+WORKDIR /app
+ENV discovery.type=single-node
+EXPOSE 9200

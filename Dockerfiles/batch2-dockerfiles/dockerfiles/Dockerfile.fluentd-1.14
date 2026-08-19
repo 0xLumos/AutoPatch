@@ -1,0 +1,25 @@
+FROM fluentd:v1.14
+LABEL maintainer="devops@example.com" \
+      description="Fluentd 1.14 log processor"
+
+EXPOSE 24224 24224/udp
+
+ENV FLUENT_UID=0 \
+    FLUENTD_CONFIG_PATH=/fluentd/etc
+
+USER root
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY fluent.conf /fluentd/etc/fluent.conf
+RUN echo "# Log processor configuration" >> /fluentd/etc/fluent.conf
+
+VOLUME ["/fluentd/log", "/fluentd/etc"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:24220 || exit 1
+
+CMD ["fluentd", "-c", "/fluentd/etc/fluent.conf", "-v"]
