@@ -1,0 +1,3 @@
+FROM postgres:13
+WORKDIR /app
+EXPOSE 5432

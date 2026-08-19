@@ -1,0 +1,23 @@
+FROM rabbitmq:3.10-management
+LABEL maintainer="devops@example.com" \
+      description="RabbitMQ 3.10 message broker"
+
+EXPOSE 5672 15672 25672
+
+ENV RABBITMQ_DEFAULT_USER=guest \
+    RABBITMQ_DEFAULT_PASS=guest \
+    RABBITMQ_DEFAULT_VHOST=/ \
+    RABBITMQ_ERLANG_COOKIE=rabbitmq_secret
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY rabbitmq.conf /etc/rabbitmq/rabbitmq.conf || true
+
+VOLUME ["/var/lib/rabbitmq"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD rabbitmq-diagnostics -q ping || exit 1
+
+CMD ["rabbitmq-server"]

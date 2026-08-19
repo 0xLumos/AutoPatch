@@ -1,0 +1,21 @@
+FROM registry:2.8
+LABEL maintainer="devops@example.com" \
+      description="Docker Registry 2.8"
+
+EXPOSE 5000
+
+ENV REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry \
+    REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR=inmemory
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY config.yml /etc/docker/registry/config.yml || true
+
+VOLUME ["/var/lib/registry"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:5000/v2/ || exit 1
+
+CMD ["/etc/docker/registry/config.yml"]

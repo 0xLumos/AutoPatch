@@ -1,0 +1,29 @@
+FROM python:3.8-bullseye
+LABEL maintainer="devops@example.com" \
+      description="Python 3.8 bullseye application runtime"
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+EXPOSE 8000
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir django djangorestframework gunicorn
+
+COPY requirements.txt /app/requirements.txt || true
+RUN pip install --no-cache-dir django==3.2 gunicorn==20.1.0
+
+VOLUME ["/app"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8000 || exit 1
+
+CMD ["gunicorn", "wsgi:app", "--bind", "0.0.0.0:8000"]
